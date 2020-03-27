@@ -7,8 +7,8 @@
 		<div class="card-body">
 		  <h5 class="card-title">Filtros</h5>
 		  <p class="card-text">Marque os filtros que serão exibidos</p>
-		  <form class="form">
-			<div class="custom-control custom-checkbox d-flex justify-content-between ">
+		  <form class="form" [formGroup]="form">
+			<!-- <div class="custom-control custom-checkbox d-flex justify-content-between ">
 				<input type="checkbox" class="custom-control-input mr-2 " id="customCheck1">
 				<label class="custom-control-label ml-2 " for="customCheck1"> checkbox</label>
 
@@ -26,19 +26,28 @@
 
 				<input type="checkbox" class="custom-control-input mr-2 " id="customCheck1">
 				<label class="custom-control-label ml-2 " for="customCheck1"> checkbox</label>
-			</div>
+			</div> -->
 
 			<div class="form-group form-inline d-flex justify-content-between mt-2">
-				<select class="custom-select mr-5">
+				<select formControlName="filter" class="custom-select mr-5">
 					<option selected>Buscar por</option>
-					<option value="1">Todos</option>
-					<option value="2">Categoria</option>
-					<option value="3">Nome</option>
+					<option value="all">Todos</option>
+					<option value="type">Categoria</option>
+					<option value="name">Nome</option>
 				  </select>
 
-				  <div>
+				  <div *ngIf="form.controls.filter.value == 'all'">
+					<button  class="btn btn-primary my-2 my-sm-0" type="button" (click)="findAll()" >Listar</button>
+				  </div>
+
+				  <div *ngIf="filter == 'name'">
+					<input formControlName="name" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+					<button class="btn btn-primary my-2 my-sm-0" type="button" (click)="findAll()" >Buscar</button>
+				  </div>
+
+				  <div *ngIf="filter == 'type'">
 					<input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
-					<button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
+					<button class="btn btn-primary my-2 my-sm-0" type="button" (click)="findAll()" >Buscar</button>
 				  </div>
 
 
@@ -49,89 +58,48 @@
 		</div>
 	</div>
 
-	<!-- <div class="accordion " id="accordionExample"   >
-		<div class="card mb-3 " >
-			<div class="card-header" id="headingOne">
-				<h2 class="mb-0">
-				  <button class="btn btn-default collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-					Collapsible Group Item #1
-				  </button>
-				</h2>
-			</div>
+	<div class="card mb-3" *ngFor="let pokemon of pokemons" >
+		<div class="row no-gutters">
+		  <div class="col-md-4">
+			<img [src]="pokemon.sprites.front_default" class="card-img" style="max-width: 150px;" alt="...">
+		  </div>
+		  <div class="col-md-8">
+			<div class="card-body">
+			  <h5 class="card-title text-center">{{ pokemon.name }}</h5>
+			  <div class="d-flex flex-row justify-content-between" >
+				<div>
+					<h6 class="card-title">Estatura</h6>
+					<p class="card-text">Altura: {{ pokemon.height }}</p>
+					<p class="card-text">Peso: {{ pokemon.weight }}</p>
+				</div>
 
-			
-			<div class="" id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-			  <div class="col-sm-4">
-				<img src="../../../assets/pokemon-icon.png" class="card-img" style="max-width: 150px;" alt="...">
-			  </div>
-			  <div class="col-sm-8">
-				<div class="card-body">
-				  <h5 class="card-title">Card title</h5>
-				  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-				  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				<div class="">
+					<h6 class="card-title">Habilidades</h6>
+					<p class="card-text" *ngFor="let ability of pokemon.abilities">{{ ability.ability.name }}</p>
+				</div>
+
+				<div class="">
+					<h6 class="card-title">Tipos</h6>
+					<p class="card-text" *ngFor="let type of pokemon.types">{{ type.type.name }}</p>
 				</div>
 			  </div>
-			</div>
-		  </div>
-
-	</div> -->
-
-	<div class="card mb-3">
-		<div class="row no-gutters">
-		  <div class="col-md-4">
-			<img src="../../../assets/pokemon-icon.png" class="card-img" style="max-width: 150px;" alt="...">
-		  </div>
-		  <div class="col-md-8">
-			<div class="card-body">
-			  <h5 class="card-title">Card title</h5>
-			  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-			</div>
-		  </div>
-		</div>
-	</div>
-
-	<div class="card mb-3">
-		<div class="row no-gutters">
-		  <div class="col-md-4">
-			<img src="../../../assets/pokemon-icon.png" class="card-img" style="max-width: 150px;" alt="...">
-		  </div>
-		  <div class="col-md-8">
-			<div class="card-body">
-			  <h5 class="card-title">Card title</h5>
-			  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-			</div>
-		  </div>
-		</div>
-	</div>
-
-	<div class="card mb-3">
-		<div class="row no-gutters">
-		  <div class="col-md-4">
-			<img src="../../../assets/pokemon-icon.png" class="card-img" style="max-width: 150px;" alt="...">
-		  </div>
-		  <div class="col-md-8">
-			<div class="card-body">
-			  <h5 class="card-title">Card title</h5>
-			  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+			  
+			  
+			  <p class="card-text"><small class="text-muted">Experiência: {{ pokemon.base_experience }}</small></p>
 			</div>
 		  </div>
 		</div>
 	</div>
 	
 	<div>
-		<nav aria-label="Page navigation example">
+		<nav *ngIf="pokemons.length" aria-label="Navegação de página">
 			<ul class="pagination justify-content-center">
-			  <li class="page-item disabled">
-				<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+			  <li class="page-item disabled " [ngClass]="{'disabled': pagination.previous == null}" >
+				<a class="page-link" (click)="changePage(pagination.previous, -1)" tabindex="-1" aria-disabled="true" href="#" >Previous</a>
 			  </li>
-			  <li class="page-item"><a class="page-link" href="#">1</a></li>
-			  <li class="page-item"><a class="page-link" href="#">2</a></li>
-			  <li class="page-item"><a class="page-link" href="#">3</a></li>
-			  <li class="page-item">
-				<a class="page-link" href="#">Next</a>
+			  <li class="page-item"><a class="page-link">{{ pagination.current }}</a></li>
+			  <li class="page-item" [ngClass]="{'disabled': pagination.next == null}">
+				<a class="page-link link" href="#" (click)="changePage(pagination.next, 1)">Next</a>
 			  </li>
 			</ul>
 		</nav>

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ListPokemonsModule } from './components/list-pokemons/list-pokemons.module';
 import { HeaderComponent } from './components/header/header.component';
+import { ListPokemonsService } from './components/list-pokemons/service/list-pokemons.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -11,9 +13,10 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   imports: [
     BrowserModule,
-    ListPokemonsModule
+    ListPokemonsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ListPokemonsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
