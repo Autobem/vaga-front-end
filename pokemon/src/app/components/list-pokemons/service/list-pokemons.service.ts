@@ -16,18 +16,19 @@ export class ListPokemonsService {
     return this.http.get(`${environment.api}/pokemon`);
   }
 
-  listByCategory(id?,  pagination?) {
-    if (id) { return this.http.get(`${environment.api}/pokemon/${id}/${pagination}`); }
-    return this.http.get(`${environment.api}/pokemon/${pagination}`);
+  listTypes() {
+    return this.http.get(`${environment.api}/type/`);
+  }
+
+  listByTypes(type) {
+    if(type) return this.http.get(`${environment.api}/type/${type}`);
   }
 
   findByUrl(url) {
-    return this.http.get(url);
+    if(url) return this.http.get(url);
   }
 
   listAll( pagination? ) {
-
-    console.log(pagination)
     if(pagination) return this.http.get(`${pagination}`);
     return this.http.get(`${environment.api}/pokemon/`);
   }

@@ -5,32 +5,11 @@
 	<div class="card">
 		<h5 class="card-header">Pokemons</h5>
 		<div class="card-body">
-		  <h5 class="card-title">Filtros</h5>
-		  <p class="card-text">Marque os filtros que serão exibidos</p>
+		  <p class="card-text">Filtros</p>
 		  <form class="form" [formGroup]="form">
-			<!-- <div class="custom-control custom-checkbox d-flex justify-content-between ">
-				<input type="checkbox" class="custom-control-input mr-2 " id="customCheck1">
-				<label class="custom-control-label ml-2 " for="customCheck1"> checkbox</label>
-
-				<input type="checkbox" class="custom-control-input mr-2 " id="customCheck1">
-				<label class="custom-control-label ml-2 " for="customCheck1"> checkbox</label>
-
-				<input type="checkbox" class="custom-control-input mr-2 " id="customCheck1">
-				<label class="custom-control-label ml-2 " for="customCheck1"> checkbox</label>
-
-				<input type="checkbox" class="custom-control-input mr-2 " id="customCheck1">
-				<label class="custom-control-label ml-2 " for="customCheck1"> checkbox</label>
-
-				<input type="checkbox" class="custom-control-input mr-2" id="customCheck1">
-				<label class="custom-control-label ml-2 " for="customCheck1"> checkbox</label>
-
-				<input type="checkbox" class="custom-control-input mr-2 " id="customCheck1">
-				<label class="custom-control-label ml-2 " for="customCheck1"> checkbox</label>
-			</div> -->
 
 			<div class="form-group form-inline d-flex justify-content-between mt-2">
 				<select formControlName="filter" class="custom-select mr-5">
-					<option selected>Buscar por</option>
 					<option value="all">Todos</option>
 					<option value="type">Categoria</option>
 					<option value="name">Nome</option>
@@ -40,14 +19,17 @@
 					<button  class="btn btn-primary my-2 my-sm-0" type="button" (click)="findAll()" >Listar</button>
 				  </div>
 
-				  <div *ngIf="filter == 'name'">
-					<input formControlName="name" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+				  <div *ngIf="form.controls.filter.value == 'name'">
+					<input formControlName="name" placeholder="Nome" class="form-control mr-sm-2" type="search" aria-label="Buscar">
 					<button class="btn btn-primary my-2 my-sm-0" type="button" (click)="findAll()" >Buscar</button>
 				  </div>
 
-				  <div *ngIf="filter == 'type'">
-					<input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
-					<button class="btn btn-primary my-2 my-sm-0" type="button" (click)="findAll()" >Buscar</button>
+				  <div *ngIf="form.controls.filter.value == 'type'">
+					  
+					<select formControlName="type" class="custom-select mr-5">
+						<option *ngFor="let t of types" [value]="t.name">{{ t.name }}</option>
+					  </select>
+					<button class="btn btn-primary my-2 my-sm-0" type="button" (click)="findByType()" >Buscar</button>
 				  </div>
 
 
@@ -91,8 +73,8 @@
 		</div>
 	</div>
 	
-	<div>
-		<nav *ngIf="pokemons.length" aria-label="Navegação de página">
+	<div *ngIf="pokemons.length && form.controls.filter.value=='all'">
+		<nav  aria-label="Navegação de página">
 			<ul class="pagination justify-content-center">
 			  <li class="page-item disabled " [ngClass]="{'disabled': pagination.previous == null}" >
 				<a class="page-link" (click)="changePage(pagination.previous, -1)" tabindex="-1" aria-disabled="true" href="#" >Previous</a>
