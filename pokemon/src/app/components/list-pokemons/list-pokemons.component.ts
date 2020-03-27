@@ -12,6 +12,9 @@ export class ListPokemonsComponent implements OnInit {
 
   pokemons: Array<any> = [];
   types: Array<any> = [];
+  error = {
+    message: null
+  }
 
   pagination: any = {
     totalItems: 0,
@@ -30,8 +33,8 @@ export class ListPokemonsComponent implements OnInit {
       filter: ['all']
     })
 
-    this.form.valueChanges.subscribe(r => {
-      console.log(r)
+    this.form.controls.filter.valueChanges.subscribe(r => {
+      this.pokemons = [];
     });
   }
 
@@ -42,7 +45,6 @@ export class ListPokemonsComponent implements OnInit {
   }
 
   findAll(page) {
-    console.log('Aguarde...');
     this.service.listAll(page).subscribe((data: any) => {
       this.pagination.totalItems = data.count;
       this.pagination.next = data.next;
@@ -63,7 +65,6 @@ export class ListPokemonsComponent implements OnInit {
   }
 
   findByType() {
-    console.log('Aguarde...');
     this.service.listByTypes(this.form.controls.type.value).subscribe((data: any) => {
 
       this.pokemons = [];
@@ -78,6 +79,15 @@ export class ListPokemonsComponent implements OnInit {
         });
       });
     });
+  }
+
+  findByName() {
+    this.service.listByName(this.form.controls.name.value).subscribe((data: any) => {
+      this.error.message = null;
+      this.pokemons = [];
+      this.pokemons.push(data);
+
+    }, ()=>{ this.error.message = "Nenhum Pokemon encontrado!" });
   }
 
   changePage(page, pageIncrement) {

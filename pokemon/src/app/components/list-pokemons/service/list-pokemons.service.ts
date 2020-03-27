@@ -11,9 +11,8 @@ export class ListPokemonsService {
     
   }
 
-  listByName(name?, pagination?) {
-    if (name) { return this.http.get(`${environment.api}/pokemon/${name}/${pagination}`); }
-    return this.http.get(`${environment.api}/pokemon`);
+  listByName(name?) {
+    if (name) { return this.http.get(`${environment.api}/pokemon/${name}/`); }
   }
 
   listTypes() {

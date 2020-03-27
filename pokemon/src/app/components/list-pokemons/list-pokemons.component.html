@@ -1,6 +1,6 @@
 
 
-<div class="box d-flex flex-column h-100 justify-content-between "  >
+<div class="box d-flex flex-column h-100"  >
 
 	<div class="card">
 		<h5 class="card-header">Pokemons</h5>
@@ -21,7 +21,7 @@
 
 				  <div *ngIf="form.controls.filter.value == 'name'">
 					<input formControlName="name" placeholder="Nome" class="form-control mr-sm-2" type="search" aria-label="Buscar">
-					<button class="btn btn-primary my-2 my-sm-0" type="button" (click)="findAll()" >Buscar</button>
+					<button class="btn btn-primary my-2 my-sm-0" [disabled]="!form.valid" type="button" (click)="findByName()" >Buscar</button>
 				  </div>
 
 				  <div *ngIf="form.controls.filter.value == 'type'">
@@ -29,7 +29,7 @@
 					<select formControlName="type" class="custom-select mr-5">
 						<option *ngFor="let t of types" [value]="t.name">{{ t.name }}</option>
 					  </select>
-					<button class="btn btn-primary my-2 my-sm-0" type="button" (click)="findByType()" >Buscar</button>
+					<button class="btn btn-primary my-2 my-sm-0"  type="button" (click)="findByType()" >Buscar</button>
 				  </div>
 
 
@@ -39,6 +39,16 @@
 		  </form>
 		</div>
 	</div>
+
+
+	<div *ngIf="error.message" class="card border-danger mb-3">
+		<!-- <div class="card-header">Header</div> -->
+		<div class="card-body text-danger">
+			<h5 class="card-title">{{ error.message }}</h5>
+			<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+		</div>
+		</div>
+
 
 	<div class="card mb-3" *ngFor="let pokemon of pokemons" >
 		<div class="row no-gutters">
