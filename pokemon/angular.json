@@ -118,8 +118,17 @@
               "devServerTarget": "pokemon:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/pokemon",
+            "netlifyToken": "d237a9793fd6c85c7b634057401d2284c3c839cbdb2edc2089b2bacb45988b19",
+            "siteId": "1bbf7d48-9cdf-4890-a25d-7f6927ff490c"
+          }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "pokemon"
 }
