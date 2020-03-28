@@ -52,33 +52,48 @@
 
 	<div class="card mb-3" *ngFor="let pokemon of pokemons" >
 		<div class="row no-gutters">
-		  <div class="col-md-4">
+		  <div class="col-md-2">
 			<img [src]="pokemon.sprites.front_default" class="card-img" style="max-width: 150px;" alt="...">
 		  </div>
-		  <div class="col-md-8">
+		  <div class="col-md-10">
+			<div class="card-header">
+				{{ pokemon.name }}
+			  </div>
 			<div class="card-body">
-			  <h5 class="card-title text-center">{{ pokemon.name }}</h5>
 			  <div class="d-flex flex-row justify-content-between" >
 				<div>
 					<h6 class="card-title">Estatura</h6>
-					<p class="card-text">Altura: {{ pokemon.height }}</p>
-					<p class="card-text">Peso: {{ pokemon.weight }}</p>
+					<p class="card-text">
+						<small class="text-muted">Altura: {{ pokemon.height }}</small>
+						
+					</p>
+					<p class="card-text">
+						<small class="text-muted">Peso: {{ pokemon.weight }}</small>
+						
+					</p>
 				</div>
 
 				<div class="">
 					<h6 class="card-title">Habilidades</h6>
-					<p class="card-text" *ngFor="let ability of pokemon.abilities">{{ ability.ability.name }}</p>
+					<p class="card-text" *ngFor="let ability of pokemon.abilities">
+						<small class="text-muted">{{ ability.ability.name }}</small>
+						
+					</p>
 				</div>
 
 				<div class="">
 					<h6 class="card-title">Tipos</h6>
-					<p class="card-text" *ngFor="let type of pokemon.types">{{ type.type.name }}</p>
+					<p class="card-text" *ngFor="let type of pokemon.types">
+						<small class="text-muted">{{ type.type.name }}</small>
+						
+					</p>
 				</div>
 			  </div>
-			  
-			  
-			  <p class="card-text"><small class="text-muted">Experiência: {{ pokemon.base_experience }}</small></p>
+
 			</div>
+			<div class="card-footer text-muted">
+				Experiência: {{ pokemon.base_experience }}
+			  </div>
 		  </div>
 		</div>
 	</div>
