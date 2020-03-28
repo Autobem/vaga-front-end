@@ -11,8 +11,11 @@ export class ListPokemonsService {
     
   }
 
-  listByName(name?) {
-    if (name) { return this.http.get(`${environment.api}/pokemon/${name}/`); }
+  listByName(name?:string) {
+    if (name) { 
+      name = name.toLowerCase();
+      return this.http.get(`${environment.api}/pokemon/${name}/`); 
+    }
   }
 
   listTypes() {

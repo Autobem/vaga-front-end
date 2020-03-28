@@ -86,7 +86,7 @@ export class ListPokemonsComponent implements OnInit {
       this.pokemons = [];
       this.pokemons.push(data);
 
-    }, ()=>{ this.error.message = "Nenhum Pokemon encontrado!" });
+    }, ()=>{ this.error.message = "Nenhum Pokemon encontrado!"; this.pokemons = []; });
   }
 
   changePage(page, pageIncrement) {
