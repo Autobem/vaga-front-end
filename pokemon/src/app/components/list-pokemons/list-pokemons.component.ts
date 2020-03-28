@@ -43,7 +43,7 @@ export class ListPokemonsComponent implements OnInit {
     }))
   }
 
-  findAll(page) {
+  findAll(page?) {
     this.service.listAll(page).subscribe((data: any) => {
       this.pagination.totalItems = data.count;
       this.pagination.next = data.next;
