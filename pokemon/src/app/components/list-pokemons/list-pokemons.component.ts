@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ListPokemonsService } from './service/list-pokemons.service';
-
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -94,7 +93,5 @@ export class ListPokemonsComponent implements OnInit {
     this.findAll(page);
     this.pagination.current += pageIncrement
   }
-
-  
 
 }
