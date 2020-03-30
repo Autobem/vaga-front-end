@@ -1,0 +1,217 @@
+/* ///////////////////////
+          RESET
+////////////////////////*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*/////   RESET  /////*/
+
+body {
+	background-color: whitesmoke;
+	font-family: 'Open Sans', sans-serif;
+
+}
+
+.container {
+	padding: 40px;
+	margin: 0 auto;
+}
+
+h1 {
+	text-align: center;
+	font-size: 54px;
+}
+
+.pokedex {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	grid-gap: 20px;
+	padding-inline-start: 0;
+	padding: 15px;
+}
+
+.card-title {
+	text-transform: capitalize;
+	margin-bottom: 0px;
+	font-size: 32px;
+	font-weight: normal;
+	position: relative;
+	z-index: 2;
+}
+
+.card-subtitle {
+	margin-top: 5px;
+	color: #666;
+	font-weight: lighter;
+	position: relative;
+	z-index: 2;
+}
+
+.card-image {
+	margin-top: -30px;
+	height: 180px;
+	position: relative;
+	z-index: 2;
+	display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+
+@keyframes bounce {
+	20% {
+			transform: translateY(-6px);
+	}
+	40% {
+			transform: translateY(0px);
+	}
+
+	80% {
+			transform: translateY(-2px);
+	}
+	100% {
+			transform: translateY(0);
+	}
+}
+
+
+  
+hr {
+	border: 1px solid #fff;
+  }
+  
+  form {
+	padding: 0 5px;
+  }
+  
+  form > label {
+	padding-left: 10px;
+  }
+  
+  figure {
+	background-color: #fff;
+	border-radius: 5px;
+	color: #000;
+	padding: 5px;
+	text-align: center;
+	width: 130px;
+	height: 130px;
+  }
+  
+  figure > figcaption {
+	text-transform: capitalize;
+  }
+  
+  #display {
+	display: flex;
+	min-height: 400px;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  #spinner {
+	animation: spin 5s linear infinite;
+	border-radius: 50%;
+	border: 16px solid #fff;
+	border-top: 16px solid #ccc;
+	border-bottom: 16px solid #ccc;
+	height: 120px;
+	width: 120px;
+  }
+  
+  @keyframes spin {
+	  0% { transform: rotate(0deg); }
+	  100% { transform: rotate(360deg); }
+  }
+  .modal-lg {
+	  width: 100%;
+    max-width: 800px !important;
+}
+.modal-pokemon{
+	display: none;
+    width: 100vw;
+    height: 100vh;
+	background: rgba(37, 37, 37, 0.596);
+    position: fixed;
+    justify-content: center;
+    top: 0px;
+    left: 0px;
+    z-index: 99999;
+    animation: modalMenuAnimate .5s;
+  }
+  @keyframes modalMenuAnimate {
+    from {opacity: 0;transform: translatex(-100%);}
+    to {opacity: 1; transform: translatex(0);}
+}
+.pop-up-pokemon{
+	background-color: #fff;
+	height: 400px;
+	width: 800px;
+	margin-top: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.header-poke{
+	height: 100px;
+	width: 100%;
+	background-color:rgb(11, 104, 107);
+}
+.header-poke img{
+
+	height: 80px;
+}
+
+.card-pokemon{
+	border-radius: 50px;
+background: linear-gradient(145deg, #ffffff, #e6e6e6);
+padding: 1.5rem 1.5rem 0rem 1.5rem;
+border-radius: 20px;
+box-shadow: 12px 12px 24px rgba(128, 128, 128, 0.2), -12px -12px 12px white;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
