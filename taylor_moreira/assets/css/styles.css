@@ -165,10 +165,7 @@ hr {
 	  0% { transform: rotate(0deg); }
 	  100% { transform: rotate(360deg); }
   }
-  .modal-lg {
-	  width: 100%;
-    max-width: 800px !important;
-}
+
 .modal-pokemon{
 	display: none;
     width: 100vw;
