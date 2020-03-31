@@ -72,6 +72,72 @@ h1 {
 	padding: 15px;
 }
 
+
+
+.steel {
+	background-color: #f4f4f4;
+}
+
+.fire {
+	background-color: #FDDFDF;
+}
+
+.grass {
+	background-color: #DEFDE0;
+}
+
+.electric {
+	background-color: #FCF7DE;
+}
+
+.water, .ice {
+	background-color: #DEF3FD;
+}
+
+.ground {
+	background-color: #f4e7da;
+}
+
+.rock {
+	background-color: #d5d5d4;
+}
+
+.fairy {
+	background-color: #fceaff;
+}
+
+.poison {
+	background-color: #98d7a5;
+}
+
+.bug {
+	background-color: #f8d5a3;
+}
+
+.dragon {
+	background-color: #97b3e6;
+}
+
+.psychic {
+	background-color: #eaeda1;
+}
+
+.flying {
+	background-color: #F5F5F5;
+}
+
+.fighting {
+	background-color: #E6E0D4;
+}
+
+.normal {
+	background-color: #F5F5F5;
+}
+
+.card:hover {
+	animation: bounce 0.5s linear;
+}
+
 .card-title {
 	text-transform: capitalize;
 	margin-bottom: 0px;
@@ -165,7 +231,10 @@ hr {
 	  0% { transform: rotate(0deg); }
 	  100% { transform: rotate(360deg); }
   }
-
+  .modal-lg {
+	  width: 100%;
+    max-width: 800px !important;
+}
 .modal-pokemon{
 	display: none;
     width: 100vw;
@@ -182,15 +251,7 @@ hr {
     from {opacity: 0;transform: translatex(-100%);}
     to {opacity: 1; transform: translatex(0);}
 }
-.pop-up-pokemon{
-	background-color: #fff;
-	height: 400px;
-	width: 800px;
-	margin-top: 100px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+
 .header-poke{
 	height: 100px;
 	width: 100%;

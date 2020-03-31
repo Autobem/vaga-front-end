@@ -1,5 +1,1 @@
-esta faltando apenas passar os dados para o modal
-e ordenar os poquemons
-
-hoje estarei ocupado
-coisa de 1 dia para resolver.
+esta faltando apenas ordenação, finalizando essa parte ja subo
