@@ -59,7 +59,7 @@ function requestPokeInfo(url, name) {
 function createCard() {
   card = `
   <div class="col-md-3 mb-5" >
-  <div class="card-pokemon" data-toggle="modal" data-target=".bd-example-modal-xl" onclick="" >
+  <div class="card-pokemon" data-toggle="modal" data-target=".bd-example-modal-xl"  onclick="requestPokeid(${id}) >
         <img class="card-image " src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png" alt="${pokemon.name}">
     <h4 class="card-title text-center ">${pokemon.name}</h4>
       <p class="card-text text-center">${pokemon.types.map(item => item.type.name).toString()}</p>
@@ -122,7 +122,7 @@ function insertModal(pokemon) {
         <li class="list-group-item"><b>Experiência: </b>${pokemon.base_experience}</li>
         <li class="list-group-item"><b>Tipo: </b>${pokemon.types.map(item => item.type.name).toString()}</li>
         <li class="list-group-item"><b>Habilidades: </b>${pokemon.abilities.map(item => item.ability.name).toString()}</li>
-        <li class="list-group-item"><b>Stats: </b>${pokemon.stats.map(item => item.stat.name).toString()}</li>
+      
         </ul>`;
   divInfo.innerHTML = ard;
   divTitle.innerHTML = `${pokemon.id} - ${pokemon.name}`;
