@@ -1,0 +1,38 @@
+<div class="card-columns">
+  <div *ngIf="parentData=== undefined">
+    <div class="card" style="width: 18rem;"  *ngFor="let key of keys" [ngSwitch]="todosPokemons[key].tipos.length">
+      <img src="{{todosPokemons[key].url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-capitalize"><strong>{{todosPokemons[key].nome}}</strong></h5>
+        <p class="card-text">{{todosPokemons[key].desc}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Types</strong></li>
+        <li class="list-group-item text-capitalize"*ngSwitchCase="1">{{todosPokemons[key].tipos}}</li>
+        <li class="list-group-item text-capitalize"*ngSwitchCase="2">{{todosPokemons[key].tipos[0]}}</li>
+        <li class="list-group-item text-capitalize"*ngSwitchCase="2">{{todosPokemons[key].tipos[1]}}</li>
+        <li class="list-group-item text-capitalize"*ngSwitchCase="3">{{todosPokemons[key].tipos[0]}}</li>
+        <li class="list-group-item text-capitalize"*ngSwitchCase="3">{{todosPokemons[key].tipos[1]}}</li>
+        <li class="list-group-item text-capitalize"*ngSwitchCase="3">{{todosPokemons[key].tipos[2]}}</li>
+      </ul>
+    </div>
+  </div>
+  <div *ngIf="parentData !== undefined">
+    <div class="card" style="width: 18rem;"  [ngSwitch]="parentData.tipos.length">
+      <img src="{{parentData.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-capitalize"><strong>{{parentData.nome}}</strong></h5>
+        <p class="card-text">{{parentData.desc}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Types</strong></li>
+        <li class="list-group-item text-capitalize"*ngSwitchCase="1">{{parentData.tipos}}</li>
+        <li class="list-group-item text-capitalize"*ngSwitchCase="2">{{parentData.tipos[0]}}</li>
+        <li class="list-group-item text-capitalize"*ngSwitchCase="2">{{parentData.tipos[1]}}</li>
+        <li class="list-group-item text-capitalize"*ngSwitchCase="3">{{parentData.tipos[0]}}</li>
+        <li class="list-group-item text-capitalize"*ngSwitchCase="3">{{parentData.tipos[1]}}</li>
+        <li class="list-group-item text-capitalize"*ngSwitchCase="3">{{parentData.tipos[2]}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
