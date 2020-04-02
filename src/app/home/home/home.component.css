@@ -1,0 +1,110 @@
+.bg-fundo{
+    background-color: rgb(240, 240, 240);/*#ADD8E6;*/ /* #87cefa */
+    height: 100%;
+}
+
+.pokedex-list {
+    padding: 80px 0;
+}
+
+.card--title{
+    font-size: 20px;
+}
+
+.card--btn{
+    margin-top: 20px;
+}
+
+
+@media(max-width: 749px){
+    .card--title{
+        font-size: 30px;
+    }
+}
+
+@media(min-width: 750px){
+    .card-lenght {
+        max-width: 18rem;
+    }
+}
+
+
+.img-dimensao{
+    border-radius: 10%;
+    background-color: lightslategray;
+    align-self: center;
+}
+
+.layout-pokemon .row > div {
+    margin-bottom: 40px;
+}
+
+.rodape{
+    display: flex;
+    height: 80px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-title{
+    margin-right: 10px;
+}
+
+.type--box {
+    color: #fff;
+    padding: 3px 5px;
+    background-color: limegreen;
+    border-radius: 10%;
+    margin: 5px 5px;
+}
+
+.data--box {
+    color: #fff;
+    padding: 3px 5px;
+    background-color: limegreen;
+    border-radius: 10%;
+    margin: 10px 5px;
+}
+
+.modal-image--description {
+    height: 250px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 10%;
+    background-color: lightslategray;
+}
+
+.modal-text--description{
+    margin: 0 0;
+}
+
+@media(min-width: 750px){
+    .modal-image--description {
+        padding: 10px;
+        height: 200px;
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 10%;
+    }
+}
+
+@media(max-width: 749px){
+    .rodape{
+        font-size: 1em;
+    }
+
+    .card {
+        font-size: 20px;
+    }
+
+    .modal-text--description{
+        margin: 0;
+        margin-top: 15px;
+        font-size: 20px;
+    }
+
+    .modal-title{
+        font-size: 25px;
+    }
+}

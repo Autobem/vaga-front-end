@@ -1,3 +1,15 @@
+## Desafio Pokémon Autobem
+
+Olá, joia? Teste finalizado e segue as instruções para executar
+
+- clone ou download do repositório
+- cd (caminho-local)/vaga-front-end/
+- npm install 
+- ng serve
+- aplicação executando em https://localhost:4200
+
+Agradeço a oportunidade!!
+
 # Teste de Frontend
 
 Olá Dev!  Tudo bem?

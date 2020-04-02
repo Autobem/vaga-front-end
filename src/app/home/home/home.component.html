@@ -1,0 +1,108 @@
+<app-header></app-header>
+
+<!--<button (click)="nextFind()">
+  Proximo
+</button>-->
+
+<div class="bg-fundo">
+  <div class="container">
+    
+    <div class="pokedex-list layout-pokemon">
+
+      <div class="mb-2 d-block d-md-none">
+        <button (click)="sortByName()" class="btn-lg btn-primary" data-toggle="tooltip" data-placement="top" title="Ordenar por nome">
+          <i class="fa fa-sort-alpha-asc"></i>
+        </button>
+        <button (click)="sortById()" class="btn-lg btn-primary ml-2"  data-toggle="tooltip" data-placement="top" title="Ordenar por Id">
+          <i class="fa fa-sort-numeric-asc"></i>
+        </button>
+      </div>
+
+      <div class="mb-2 d-md-block d-none">
+        <button (click)="sortByName()" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Ordenar por nome">
+          <i class="fa fa-sort-alpha-asc"></i>
+        </button>
+        <button (click)="sortById()" class="btn btn-primary ml-2"  data-toggle="tooltip" data-placement="top" title="Ordenar por Id">
+          <i class="fa fa-sort-numeric-asc"></i>
+        </button>
+      </div>
+      
+      
+      <div class="row">
+          <div 
+            *ngFor="let p of pokemons" 
+            class="col-12 col-md-6 col-lg-3">
+            <div class="card  text-white bg-secondary mb-3 text-center card-lenght">
+              <div class="card-body text-center">
+                <p class="text-light card--title">{{p.name}}</p>
+                <img class="card-img img-dimensao text-center" [src]="p.url" alt="Card image cap">
+                <div class="text-right mt-10 card--btn">
+                  <a href="javascript:;"  data-toggle="modal" data-target="#siteModal" (click)="openPokemon(p)" class="btn btn-primary card-link">Ver detalhes</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button-next text-right"> 
+          <button (click)="nextFind()" class="btn btn-primary">Mais Pokémons</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="rodape">
+  <p> &copy; Todos os direitos resevados.</p>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="siteModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+      
+          <div class="modal-header">
+              <h4 class="modal-title">{{pokemonModal.name}}</h4>
+              <span class="type--box" *ngFor="let type of pokemonModal.types">
+                {{type.type.name}}
+              </span>
+              <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+              </button>
+          </div>
+          
+          <div class="modal-body">
+              <div class="container">
+
+              <div class="row">
+                      <div class="col-12 col-md-6 text-center">
+                          <img  class="modal-image--description" [src]="pokemonModal.url" alt="imagem pokemon">
+                      </div>
+                      <div class="col-12 col-md-6 modal-text--description">
+                          <p>
+                            <strong>Características: </strong><br> 
+                            height: {{pokemonModal.height}} mt(s) <br>
+                            weight: {{pokemonModal.weight}} kg</p>
+                            <p><strong>Habilidades: </strong><br>
+                              <span class="" *ngFor="let type of pokemonModal.abilities">
+                                {{type.ability.name}} <br>
+                              </span></p>
+                              <p> <strong>Estatística: </strong><br>
+                                <span class="" *ngFor="let type of pokemonModal.stats">
+                                  {{type.stat.name}}:{{type.base_stat}} <br>
+                              </span></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+          </div>
+          
+      </div>
+  </div>
+</div>
+
+
+
+
+
