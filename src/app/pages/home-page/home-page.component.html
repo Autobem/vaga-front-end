@@ -1,0 +1,18 @@
+<div class="app" >
+    
+    <navbar *ngIf="((this.hash == '#top' || this.hash =='') && !this.navigationService.visitedPokedex)"></navbar>
+
+
+    <div fullpage id="fullpage" [options]="config" (ref)="getRef($event)">
+        <div class="section">
+            
+            <app-top></app-top>
+        </div>
+
+        <div class="section">
+            <app-pesquisa></app-pesquisa>
+        </div>
+    </div>
+
+    <router-outlet></router-outlet>
+</div>

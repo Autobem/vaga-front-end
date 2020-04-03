@@ -1,0 +1,110 @@
+
+
+.container {
+  background: rgb(39, 31, 77);
+  background: radial-gradient(circle, rgba(39, 31, 77, 1) 16%, rgba(28, 22, 53, 1) 66%);
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  padding-right: 0;
+  padding-left: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 18vh;
+  width: 100%;
+
+  h1 {
+    font-weight: bold;
+    color: #fafafa;
+    font-size: 2.5rem;
+  }
+}
+
+.sprite {
+  height: 140px;
+  width: 140px;
+}
+
+.pokemon-type {
+  color: #fff;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 0.25rem 0.8rem;
+}
+
+.card {
+  height: 210px;
+}
+
+.card-title {
+  margin: 1rem 0 0 1rem;
+}
+
+.card-body {
+  padding-top: 0;
+}
+
+h6 {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.stats {
+  span {
+    font-size: 1rem;
+  }
+}
+
+.stat-bar {
+  height: 19px;
+  width: 200px;
+  background: rgb(236, 236, 236);
+  margin-bottom: 5px;
+}
+
+.stat-bar-filled {
+  height: 19px;
+  display: flex;
+  align-items: center;
+}
+
+.stat-bar-value {
+  color: #fff;
+  font-size: 0.9rem;
+  margin-left: 0.35rem;
+}
+
+.profile {
+  .atribute-title {
+    font-weight: 600;
+  }
+  span.atribute-title {
+    font-size: 1.1rem;
+  }
+  span {
+    font-size: 1rem;
+  }
+}
+
+.grid-container {
+  width: 90%;
+}
+
+.evolutions, .evo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

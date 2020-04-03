@@ -1,0 +1,139 @@
+.content {
+  height: 100%;
+  background: rgb(39, 31, 77);
+  background: radial-gradient(circle, rgba(39, 31, 77, 1) 16%, rgba(28, 22, 53, 1) 66%);
+  display: flex;
+}
+
+.search-section {
+  height: 100vh;
+  width: 25%;
+  background: rgb(127, 105, 255);
+  background: linear-gradient(53deg, rgba(127, 105, 255, 1) 16%, rgba(209, 70, 255, 1) 66%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h4 {
+    font-weight: bold;
+    color: #fafafa;
+  }
+
+  form,
+  .form-group,
+  .sort {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .form-group,
+  .sort {
+    align-items: flex-start;
+    label {
+      color: #fff;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .sort-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    button {
+      width: 45%;
+    }
+  }
+}
+.card,
+.card-body,
+.container,
+#form-pesquisa,
+.results-section  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#form-pesquisa {
+  border-radius: 20px;
+  padding: 2rem;
+  width: 80%;
+}
+
+.results-section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+
+  .container,
+  .card,
+  .results-section {
+    flex-direction: column;
+  }
+
+  .card {
+    height: 150px;
+    width: 150px;
+    cursor: pointer;
+    background: #ffffff09;
+    color: #fff;
+    transition: background 0.5s;
+
+    .sprite {
+      height: 106px;
+      width: 106px;
+    }
+  }
+
+  .card:hover {
+    background: #ffffff15;
+  }
+
+  .paginator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 15%;
+    background: #ffffff09;
+    border-radius: 5px;
+    padding: 1rem;
+
+    span,
+    a {
+      color: #fafafa;
+    }
+  }
+}
+
+#not-found {
+  color: #fafafa;
+  font-size: 1.4rem;
+}
+
+.page-btn {
+  cursor: pointer;
+  i {
+    font-size: 1.5rem;
+  }
+}
+
+#page-number {
+  font-size: 1rem;
+}
+
+.disabled {
+  color: grey !important;
+  cursor: not-allowed;
+}
+
+#loading {
+  color: #999;
+}

@@ -1,0 +1,87 @@
+<div class="content">
+
+    <div class="search-section">
+
+        <h4>Pesquise um Pokémon</h4>
+
+        <div id="form-pesquisa">
+
+            <form class="" [formGroup]="pokemonForm">
+
+                <div class="form-group ">
+                    <label for="pokemon-input">Nome ou Número</label>
+                    <input type="text" class="form-control" id="pokemon-input" placeholder="Ex: Charmander"
+                        formControlName="pokemonInputControl" (keyup)="onKeyUp($event)">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="pokemon-input">Tipo</label>
+                    <select class="form-control" id="exampleFormControlSelect1" formControlName="typeSelectControl"
+                        (change)="onSelect()">
+                        <option value="">Todos</option>
+                        <option *ngFor="let type of types" [value]="type.name">{{type.name | titlecase}}</option>
+
+                    </select>
+                </div>
+
+                <div class="sort">
+                    <label>Ordenar</label>
+                    <div class="sort-buttons">
+                        <button (click)="sortPokemonArray(this.pokemonResults, 'name')"
+                            class="btn btn-primary">Nome</button>
+                        <button (click)="sortPokemonArray(this.pokemonResults, 'id')"
+                            class="btn btn-primary">Id</button>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+    <div class="results-section ">
+
+        <div class="container">
+
+            <div class="row justify-content-center align-items-center">
+
+                <h3 id="loading" *ngIf="!this.isLoaded" >Loading...</h3>
+
+                <div *ngFor="let item of this.pages[this.currentPageNumber]" class="card mx-2 my-2"
+                    (click)="openPokemon(item.id)">
+
+                    <img [src]="item.sprite" class="card-img-top sprite">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name | titlecase }}</h5>
+
+                    </div>
+                </div>
+
+                <div *ngIf="this.pokemonResults.length == 0 && this.isLoaded" id="not-found" class="my-3 column align-items-center justify-content-center">
+                    <i class="fas fa-frown my-4"></i>
+                    <span >Pokémon não encontrado.</span>
+                </div>
+
+            </div>
+
+            <div class="paginator my-4">
+
+                <span class="page-btn" [ngClass]="{disabled: !(this.currentPageNumber+1 > 1)}"
+                    (click)="previousPage()"><i class="fas fa-caret-left"></i>
+                </span>
+
+                <span id="page-number">{{currentPageNumber + 1}}/{{this.numPages == 0 ? 1 : this.numPages}}</span>
+
+                <span class="page-btn" [ngClass]="{disabled: !(this.currentPageNumber +1 < this.numPages)}"
+                    (click)="nextPage()"><i class="fas fa-caret-right"></i>
+                </span>
+
+            </div>
+
+
+
+        </div>
+
+    </div>

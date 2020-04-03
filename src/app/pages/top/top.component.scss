@@ -1,0 +1,23 @@
+.content{
+    display: flex;
+    width: 100%;
+    margin-top: -8rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.image{
+    position: absolute;
+    right: 70px;
+}
+
+.headline{
+    width: 50%;
+    margin-right: 25rem;
+    color: #fff;
+
+    h2{
+        font-weight: bold;
+        font-size: 3rem;
+    }
+}

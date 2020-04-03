@@ -1,0 +1,175 @@
+<div class="container">
+    <div class="header" [style.background]="pokemon.color">
+
+        <div class="d-flex ml-2 align-items-center">
+            <div class="image">
+                <img class="sprite" [src]="pokemon.sprite">
+            </div>
+
+            <div class="header-column ml-3">
+                <h1 class="mb-2">{{pokemon.name | titlecase}}</h1>
+                <span class="pokemon-type mr-2 mt-4 "
+                    *ngFor="let item of pokemon.types">{{item.type.name | titlecase}}</span>
+            </div>
+        </div>
+
+        <div id="header-id" class="mr-4">
+            <h1>#{{pokemon.id}}</h1>
+        </div>
+
+    </div>
+    <div class="content column">
+
+        <div class="grid-container my-5">
+            <div class="row">
+                <div class="col-5">
+                    <div class="card mb-4 stats ">
+                        <div class="card-title">
+                            <h5>Atributos</h5>
+                        </div>
+                        <div class=" card-body mx-3 mt-1 d-flex justify-content-between   ">
+
+                            <div class="column ">
+                                <span>HP</span>
+                                <span>Attack</span>
+                                <span>Defense</span>
+                                <span>Speed</span>
+                                <span>Sp Atk</span>
+                                <span>Sp Def</span>
+                            </div>
+
+                            <div class="column">
+                                <div class="stat-bar">
+                                    <div class="stat-bar-filled" [style.background]="pokemon.color"
+                                        [style.width.%]="(pokemon.stats[5].value*100)/150">
+                                        <span class="stat-bar-value">{{pokemon.stats[5].value}}</span>
+                                    </div>
+                                </div>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-filled" [style.background]="pokemon.color"
+                                        [style.width.%]="(pokemon.stats[4].value*100)/150">
+                                        <span class="stat-bar-value">{{pokemon.stats[4].value}}</span>
+                                    </div>
+
+                                </div>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-filled" [style.background]="pokemon.color"
+                                        [style.width.%]="(pokemon.stats[3].value*100)/150">
+                                        <span class="stat-bar-value">{{pokemon.stats[3].value}}</span>
+                                    </div>
+                                </div>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-filled" [style.background]="pokemon.color"
+                                        [style.width.%]="(pokemon.stats[0].value*100)/150">
+                                        <span class="stat-bar-value">{{pokemon.stats[0].value}}</span>
+                                    </div>
+                                </div>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-filled" [style.background]="pokemon.color"
+                                        [style.width.%]="(pokemon.stats[2].value*100)/150">
+                                        <span class="stat-bar-value">{{pokemon.stats[2].value}}</span>
+                                    </div>
+                                </div>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-filled" [style.background]="pokemon.color"
+                                        [style.width.%]="(pokemon.stats[1].value*100)/150">
+                                        <span class="stat-bar-value">{{pokemon.stats[1].value}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="col-7">
+
+                    <div class="card mb-4 ">
+                        <div class="card-title">
+                            <h5>Ataques</h5>
+                        </div>
+
+
+                        <div class="card-body overflow-auto">
+
+
+                            <div class="row ml-1">
+                                <div class="col-6">
+                                    <div class="column">
+
+                                        <span *ngFor="let move of pokemon.moves">{{move.name | titlecase}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+
+                                    <div class="column">
+                                        <span *ngFor="let move of pokemon.moves">{{move.method | titlecase}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-7">
+                    <div class="card">
+                        <div class="card-title">
+                            <h5>Evoluções</h5>
+                        </div>
+                        <div class="card-body mb-4 evolutions">
+
+                            <div  [hidden]="this.evolutions.length < 1"
+                                *ngFor="let poke of this.evolutions; let i = index" class="evo">
+
+                                <div class="column justify-content-center align-items-center">
+                                    <img [src]="poke.sprites.front_default" class="sprite" alt="">
+                                    <h4>{{poke.name | titlecase}}</h4>
+                                </div>
+                                <i *ngIf="!(i == this.evolutions.length -1)" style="font-size: 2rem"
+                                    class="fas fa-arrow-alt-circle-right"></i>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-title">
+                            <h5>Profile</h5>
+                        </div>
+                        <div class=" card-body mx-3 mt-1 d-flex profile w-100">
+
+
+                            <div class=" d-flex column justify-content-between w-75">
+                                <span class="atribute-title">Altura</span>
+                                <span>{{pokemon.height}}m</span>
+                                <span class="atribute-title">Peso</span>
+                                <span>{{pokemon.weight}}kgs</span>
+
+                            </div>
+                            <div class="d-flex column w-75">
+                                <span class="atribute-title">Habilidades</span>
+                                <span class="mt-2"
+                                    *ngFor="let ab of pokemon.abilities">{{ab | titlecase}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button (click)="back()" class="btn btn-secondary">Voltar</button>
+
+    </div>
+
+
+
+</div>
