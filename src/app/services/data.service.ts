@@ -31,67 +31,38 @@ export class DataService {
     { type: 'shadow', hex: '#313750' }
 
   ]
-   types: Array<PokemonType> = [];
+  types: Array<PokemonType> = [];
 
 
   constructor(private http: HttpClient) { this.fetchTypes() }
+
+  fetchUrl(url) {
+    return fetch(url).then((res) => res.json());
+  }
 
   getPokemonByName(name: String) {
     return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${name}`);
   }
 
-  getPokemonById(id: String) {
-    return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${id}`);
-  }
 
-
-  fetchPokemon(param: string, type: SearchType) {
-
-    switch (type) {
-      case SearchType.GetAll:
-        return this.http.get<any>(`${param}`);
-
-      case SearchType.ByName:
-        return this.getPokemonByName(param);
-
-      case SearchType.ById:
-        return this.getPokemonById(param);
-
-      default:
-        break;
-    }
-
-  }
-
-  fetchTypes(){
+  fetchTypes() {
 
     this.http.get<any>('https://pokeapi.co/api/v2/type').subscribe(src => {
 
-        src.results.forEach(element => {
-          let len = element.url.length;
-            let tipo: PokemonType = {}
-            tipo.name = element.name;
-            tipo.id = element.url.substr(31, len-31-1)
+      src.results.forEach(element => {
+        let len = element.url.length;
+        let tipo: PokemonType = {}
+        tipo.name = element.name;
+        tipo.id = element.url.substr(31, len - 31 - 1)
 
-            this.types.push(tipo)
-            
-        });
+        this.types.push(tipo)
+
+      });
     })
   }
 
-  getTypes(){
+  getTypes() {
     return this.types;
-  }
-
-  getPokemonByType(id: string){
-    
-   return this.http.get<any>(`https://pokeapi.co/api/v2/type/${id}`);
-
-  }
-
-
-  getPokemonInfoByUrl(url: string) {
-    return this.http.get<any>(`${url}`)
   }
 
   getTypeColor(type: string): string {
@@ -105,9 +76,8 @@ export class DataService {
       }
     });
 
-    
     return color;
-  
+
   }
 
 }

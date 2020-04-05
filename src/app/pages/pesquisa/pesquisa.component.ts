@@ -97,14 +97,13 @@ export class PesquisaComponent implements OnInit {
           pokemon.stats.push(_stat);
         });
 
-        let typesLen = element.types.length
+        let typesLen = element.types.length;
         pokemon.color = this.dataService.getTypeColor(element.types[typesLen - 1].type.name);
 
-        fetch(element.species.url)
-          .then((res) => res.json())
+        this.dataService.fetchUrl(element.species.url)
           .then(data => {
 
-            fetch(data.evolution_chain.url).then((result) => result.json())
+            this.dataService.fetchUrl(data.evolution_chain.url)
               .then(src => {
 
                 let len1: number = 0; //qtd evoluções da primeira evolução

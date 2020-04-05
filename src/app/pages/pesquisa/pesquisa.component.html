@@ -66,7 +66,7 @@
 
             </div>
 
-            <div class="paginator my-4">
+            <div *ngIf="this.isLoaded" class="paginator my-4">
 
                 <span class="page-btn" [ngClass]="{disabled: !(this.currentPageNumber+1 > 1)}"
                     (click)="previousPage()"><i class="fas fa-caret-left"></i>
