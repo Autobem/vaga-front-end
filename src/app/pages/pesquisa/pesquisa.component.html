@@ -11,27 +11,31 @@
                 <div class="form-group ">
                     <label for="pokemon-input">Nome ou Número</label>
                     <input type="text" class="form-control" id="pokemon-input" placeholder="Ex: Charmander"
-                        formControlName="pokemonInputControl" (keyup)="onKeyUp($event)">
+                        formControlName="pokemonInputControl">
                 </div>
 
+                <div class="form-group">
+                    <button (click)="this.onSearch()" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </div>
 
                 <div class="form-group">
                     <label for="pokemon-input">Tipo</label>
-                    <select class="form-control" id="exampleFormControlSelect1" formControlName="typeSelectControl"
-                        (change)="onSelect()">
-                        <option value="">Todos</option>
-                        <option *ngFor="let type of types" [value]="type.name">{{type.name | titlecase}}</option>
+                    <select class="form-control" id="exampleFormControlSelect1" formControlName="typeSelectControl">
+                        <option value="0">Todos</option>
+                        <option *ngFor="let type of types" [value]="type.id">{{type.name | titlecase}}</option>
 
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <button (click)="this.onTypeSearch()" class="btn btn-primary"><i class="fa fa-search"></i></button>
                 </div>
 
                 <div class="sort">
                     <label>Ordenar</label>
                     <div class="sort-buttons">
-                        <button (click)="sortPokemonArray(this.pokemonResults, 'name')"
-                            class="btn btn-primary">Nome</button>
-                        <button (click)="sortPokemonArray(this.pokemonResults, 'id')"
-                            class="btn btn-primary">Id</button>
+                        <button (click)="onNameSort()" class="btn btn-primary">Nome</button>
+                        <button (click)="onIdSort()" class="btn btn-primary">Id</button>
                     </div>
                 </div>
 
@@ -47,7 +51,7 @@
 
             <div class="row justify-content-center align-items-center">
 
-                <h3 id="loading" *ngIf="!this.isLoaded" >Loading...</h3>
+                <h3 id="loading" *ngIf="!this.isLoaded">Loading...</h3>
 
                 <div *ngFor="let item of this.pages[this.currentPageNumber]" class="card mx-2 my-2"
                     (click)="openPokemon(item.id)">
@@ -59,23 +63,33 @@
                     </div>
                 </div>
 
-                <div *ngIf="this.pokemonResults.length == 0 && this.isLoaded" id="not-found" class="my-3 column align-items-center justify-content-center">
+                <div *ngIf="(this.pages.length == 0 || this.pages[0].length == 0) && this.isLoaded " id="not-found"
+                    class="my-3 column align-items-center justify-content-center">
                     <i class="fas fa-frown my-4"></i>
-                    <span >Pokémon não encontrado.</span>
+                    <span *ngIf="!this.typeSearch"> Pokémon não encontrado.</span>
+                    <span *ngIf="this.typeSearch">Pokémons não encontrados.</span>
                 </div>
 
             </div>
 
-            <div *ngIf="this.isLoaded" class="paginator my-4">
+            <div *ngIf="this.isLoaded && this.pages.length > 1" class="paginator my-4">
 
                 <span class="page-btn" [ngClass]="{disabled: !(this.currentPageNumber+1 > 1)}"
                     (click)="previousPage()"><i class="fas fa-caret-left"></i>
                 </span>
 
-                <span id="page-number">{{currentPageNumber + 1}}/{{this.numPages == 0 ? 1 : this.numPages}}</span>
+                <span *ngIf="!this.typeSearch && !this.nameSort"
+                    id="page-number">&nbsp;{{(this.currentPageNumber * 18) +1}}&nbsp;-&nbsp;{{(this.currentPageNumber * 18)+18}}&nbsp;</span>
 
-                <span class="page-btn" [ngClass]="{disabled: !(this.currentPageNumber +1 < this.numPages)}"
-                    (click)="nextPage()"><i class="fas fa-caret-right"></i>
+                <span *ngIf="!this.typeSearch && this.nameSort"
+                    id="page-number">&nbsp;{{this.currentPageNumber + 1}}&nbsp;-&nbsp;{{this.pages.length}}&nbsp;</span>
+
+                <span *ngIf="this.typeSearch"
+                    id="page-number">&nbsp;{{this.currentPageNumber + 1}}&nbsp;-&nbsp;{{this.pages.length}}&nbsp;</span>
+
+
+                <span class="page-btn" (click)="nextPage()" [ngClass]="{'disabled': false }"><i
+                        class="fas fa-caret-right"></i>
                 </span>
 
             </div>

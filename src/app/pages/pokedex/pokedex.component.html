@@ -124,14 +124,14 @@
                         </div>
                         <div class="card-body mb-4 evolutions">
 
-                            <div  [hidden]="this.evolutions.length < 1"
-                                *ngFor="let poke of this.evolutions; let i = index" class="evo">
+                            <div  [hidden]="this.pokemon.evolutions.length < 1"
+                                *ngFor="let poke of this.pokemon.evolutions; let i = index" class="evo">
 
                                 <div class="column justify-content-center align-items-center">
                                     <img [src]="poke.sprites.front_default" class="sprite" alt="">
                                     <h4>{{poke.name | titlecase}}</h4>
                                 </div>
-                                <i *ngIf="!(i == this.evolutions.length -1)" style="font-size: 2rem"
+                                <i *ngIf="!(i == this.pokemon.evolutions.length -1)" style="font-size: 2rem"
                                     class="fas fa-arrow-alt-circle-right"></i>
 
                             </div>

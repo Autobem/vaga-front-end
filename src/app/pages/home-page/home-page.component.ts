@@ -7,7 +7,7 @@ import { NavigationService } from 'src/app/services/navigation.service';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  
+
   title = 'pokemon';
   config: any;
   fullpage_api: any;
@@ -16,7 +16,6 @@ export class HomePageComponent implements OnInit {
   @HostListener('window:hashchange', ['$event'])
   hashChangeHandler(e) {
     this.hash = window.location.hash
-    console.log(window.location.hash);
 
     if (this.hash == "#top") {
       this.navigationService.visitedPokedex = false;
@@ -24,10 +23,10 @@ export class HomePageComponent implements OnInit {
 
   }
 
- 
+
   constructor(public navigationService: NavigationService) {
 
-    this.hash =  '#top';
+    this.hash = '#top';
     this.config = {
       anchors: ['top', 'features', 'info',],
       menu: '#menu',
@@ -37,8 +36,8 @@ export class HomePageComponent implements OnInit {
       afterLoad: (origin, destination, direction) => {
       }
     };
-  
-  
+
+
 
   }
 
@@ -50,5 +49,5 @@ export class HomePageComponent implements OnInit {
   getRef(fullPageRef) {
     this.fullpage_api = fullPageRef;
   }
-  
+
 }

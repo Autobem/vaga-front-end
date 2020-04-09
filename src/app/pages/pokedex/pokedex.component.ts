@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Pokemon } from 'src/app/models/pokemon';
 import { NavigationService } from 'src/app/services/navigation.service';
-import { Router, ActivatedRoute} from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { Router } from '@angular/router';
+import { forkJoin, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pokedex',
@@ -13,28 +13,14 @@ import { forkJoin } from 'rxjs';
 export class PokedexComponent implements OnInit {
 
   pokemon: Pokemon = {}
-  evolutions: Array<Pokemon> = []
-
-  constructor(private navigationService: NavigationService, private dataService: DataService,private router: Router, private route: ActivatedRoute) { }
+  constructor(private navigationService: NavigationService,  private router: Router) { }
 
   ngOnInit(): void {
-
-      this.pokemon = this.navigationService.getSelectedPokemon();
-      this.setPokemon();
-
-  }
-  setPokemon(){
-    
-    let observables = this.pokemon.evolutionChain.map(pokemon => this.dataService.getPokemonByName(pokemon));
-
-    let source = forkJoin(observables);
-
-    source.subscribe(src => {this.evolutions = src; console.log(this.evolutions);})
-
+    this.pokemon = this.navigationService.getSelectedPokemon();
   }
 
-  back(){
-    this.router.navigate([''], {fragment: 'features'} )
+  back() {
+    this.router.navigate([''], { fragment: 'features' })
   }
 
 }

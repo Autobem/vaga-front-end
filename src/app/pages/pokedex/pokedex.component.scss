@@ -1,5 +1,3 @@
-
-
 .container {
   background: rgb(39, 31, 77);
   background: radial-gradient(circle, rgba(39, 31, 77, 1) 16%, rgba(28, 22, 53, 1) 66%);
@@ -102,9 +100,9 @@ h6 {
   width: 90%;
 }
 
-.evolutions, .evo {
+.evolutions,
+.evo {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-

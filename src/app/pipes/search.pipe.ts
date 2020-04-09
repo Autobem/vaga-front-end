@@ -16,34 +16,34 @@ export class SearchPipe implements PipeTransform {
         const type_num = v.types.length;
 
         if (selectedType == "") {
-          if (v.name.toLowerCase().indexOf(searchValue.toLowerCase()) > -1){
+          if (v.name.toLowerCase().indexOf(searchValue.toLowerCase()) > -1) {
             result.push(v);
           }
         }
 
         else {
 
-            if (type_num > 1) {
+          if (type_num > 1) {
 
-              if (v.name.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
-                && (v.types[0].type.name.toLowerCase() == selectedType.toLowerCase()
-                  || v.types[1].type.name.toLowerCase() == selectedType.toLowerCase())) {
+            if (v.name.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
+              && (v.types[0].type.name.toLowerCase() == selectedType.toLowerCase()
+                || v.types[1].type.name.toLowerCase() == selectedType.toLowerCase())) {
 
-                result.push(v);
-
-              }
+              result.push(v);
 
             }
 
-            else {
+          }
 
-              if (v.name.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
-                && (v.types[0].type.name.toLowerCase() == selectedType.toLowerCase())) {
+          else {
 
-                result.push(v);
+            if (v.name.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
+              && (v.types[0].type.name.toLowerCase() == selectedType.toLowerCase())) {
 
-              }
+              result.push(v);
+
             }
+          }
         }
 
       });

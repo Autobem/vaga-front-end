@@ -40,10 +40,22 @@ export class DataService {
     return fetch(url).then((res) => res.json());
   }
 
-  getPokemonByName(name: String) {
-    return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${name}`);
+  fetchPage(page: number) {
+
+    const url = `https://pokeapi.co/api/v2/pokemon/?offset=${page * 18}&limit=18`;
+    return fetch(url).then((res) => res.json());
+
   }
 
+  getPokemonByNameOrId(value: string) {
+    const url = `https://pokeapi.co/api/v2/pokemon/${value}`;
+    return fetch(url).then((res) => res.json());
+  }
+
+  getPokemonByType(id: number){
+    const url = `https://pokeapi.co/api/v2/type/${id}`;
+    return fetch(url).then((res) => res.json());
+  }
 
   fetchTypes() {
 
@@ -54,7 +66,6 @@ export class DataService {
         let tipo: PokemonType = {}
         tipo.name = element.name;
         tipo.id = element.url.substr(31, len - 31 - 1)
-
         this.types.push(tipo)
 
       });

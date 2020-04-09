@@ -14,6 +14,7 @@ export interface Pokemon {
     abilities?: string[],
     stats?: Array<Stat>,
     evolutionChain?: string[];
+    evolutions?: Array<Pokemon>
     
 
 }

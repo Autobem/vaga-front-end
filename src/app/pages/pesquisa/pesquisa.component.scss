@@ -1,7 +1,7 @@
 .content {
   height: 100%;
-  background: rgb(39, 31, 77);
-  background: radial-gradient(circle, rgba(39, 31, 77, 1) 16%, rgba(28, 22, 53, 1) 66%);
+
+
   display: flex;
 }
 
@@ -72,7 +72,8 @@
   height: 100vh;
   width: 100%;
   display: flex;
-
+  background: rgb(39, 31, 77);
+  background: radial-gradient(circle, rgba(39, 31, 77, 1) 16%, rgba(28, 22, 53, 1) 66%);
   .container,
   .card,
   .results-section {
