@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pokemon } from '../model/pokemon.model';
+import { Pageable } from '../model/pageable.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,12 @@ export class ServiceService {
     this.baseUrlRead = 'https://pokeapi.co/api/v2/pokemon';
   }
 
-  getPokemonByName(pokemon: string): Observable<any>{
+  getPokemonByName(pokemon: string): Observable<Pokemon>{
     pokemon = pokemon.toLocaleLowerCase();
     return this.http.get<any>(`${this.baseUrlRead}/${pokemon}/`);
   }
 
-  getAllPokemons(url): Observable<any[]>{
-    return this.http.get<any[]>(url);
+  getAllPokemons(url): Observable<Pageable>{
+    return this.http.get<Pageable>(url);
   }
 }

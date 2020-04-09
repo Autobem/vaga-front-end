@@ -15,19 +15,11 @@
     margin-top: 20px;
 }
 
-
-@media(max-width: 749px){
-    .card--title{
-        font-size: 30px;
-    }
+.estatistica-row {
+    border-top: 1px solid #ccc;
+    margin-top: 15px;
+    padding-top: 15px;
 }
-
-@media(min-width: 750px){
-    .card-lenght {
-        max-width: 18rem;
-    }
-}
-
 
 .img-dimensao{
     border-radius: 10%;
@@ -79,6 +71,9 @@
     margin: 0 0;
 }
 
+/* ------------------- *\
+    Responsive Layout
+\* ------------------- */
 @media(min-width: 750px){
     .modal-image--description {
         padding: 10px;
@@ -86,6 +81,10 @@
         width: 200px;
         border: 1px solid #ccc;
         border-radius: 10%;
+    }
+
+    .card-lenght {
+        max-width: 18rem;
     }
 }
 
@@ -106,5 +105,14 @@
 
     .modal-title{
         font-size: 25px;
+    }
+
+    .card--title{
+        font-size: 30px;
+    }
+
+    .estatistica-row {
+        margin-top:0;
+        padding-top:0;
     }
 }

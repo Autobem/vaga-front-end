@@ -34,8 +34,8 @@
             class="col-12 col-md-6 col-lg-3">
             <div class="card  text-white bg-secondary mb-3 text-center card-lenght">
               <div class="card-body text-center">
-                <p class="text-light card--title">{{p.name}}</p>
-                <img class="card-img img-dimensao text-center" [src]="p.url" alt="Card image cap">
+                <p class="text-light card--title">#{{p.id}} {{p.name | titlecase}}</p>
+                <img class="card-img img-dimensao text-center" [src]="p.sprites.front_default" alt="Card image cap">
                 <div class="text-right mt-10 card--btn">
                   <a href="javascript:;"  data-toggle="modal" data-target="#siteModal" (click)="openPokemon(p)" class="btn btn-primary card-link">Ver detalhes</a>
                 </div>
@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="button-next text-right"> 
-          <button (click)="nextFind()" class="btn btn-primary">Mais Pokémons</button>
+          <button *ngIf="!finishList" (click)="nextFind()" class="btn btn-primary">Mais Pokémons</button>
         </div>
     </div>
   </div>
@@ -60,7 +60,7 @@
       <div class="modal-content">
       
           <div class="modal-header">
-              <h4 class="modal-title">{{pokemonModal.name}}</h4>
+              <h4 class="modal-title">{{pokemonModal.name | titlecase}}</h4>
               <span class="type--box" *ngFor="let type of pokemonModal.types">
                 {{type.type.name}}
               </span>
@@ -74,7 +74,7 @@
 
               <div class="row">
                       <div class="col-12 col-md-6 text-center">
-                          <img  class="modal-image--description" [src]="pokemonModal.url" alt="imagem pokemon">
+                          <img  class="modal-image--description" [src]="pokemonModal.sprites.front_default" alt="imagem pokemon">
                       </div>
                       <div class="col-12 col-md-6 modal-text--description">
                           <p>
@@ -85,11 +85,38 @@
                               <span class="" *ngFor="let type of pokemonModal.abilities">
                                 {{type.ability.name}} <br>
                               </span></p>
-                              <p> <strong>Estatística: </strong><br>
-                                <span class="" *ngFor="let type of pokemonModal.stats">
-                                  {{type.stat.name}}:{{type.base_stat}} <br>
-                              </span></p>
                       </div>
+                  </div>
+                  <div class="row estatistica-row">
+                    <div class="col-12 modal-text--description">
+                      <!--<app-bar-chart [listLabel]="listLabel" [listData]="listData"></app-bar-chart>-->
+                      <div class="d-md-block d-none">
+                        <div style="display: block">
+                          <canvas baseChart
+                                  [datasets]="barChartData"
+                                  [labels]="barChartLabels"
+                                  [options]="barChartOptions"
+                                  [legend]="barChartLegend"
+                                  [chartType]="barChartType">
+                          </canvas>
+                        </div>
+                      </div>
+                      <div class="d-block d-md-none">
+                        <div style="display: block">
+                          <canvas baseChart
+                                  [datasets]="barChartData"
+                                  [labels]="barChartLabels"
+                                  [options]="barChartOptionsMobile"
+                                  [legend]="barChartLegend"
+                                  [chartType]="barChartTypeMobile">
+                          </canvas>
+                        </div>
+                      </div>
+                      <!--<p> <strong>Estatística: </strong><br>
+                        <span class="" *ngFor="let type of pokemonModal.stats">
+                          {{type.stat.name}}:{{type.base_stat}} <br>
+                      </span></p>-->
+                    </div>
                   </div>
               </div>
           </div>

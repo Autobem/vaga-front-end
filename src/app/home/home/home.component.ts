@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { ServiceService } from '../service.service';
 import { ModalComponent } from '../modal/modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Pageable } from 'src/app/model/pageable.model';
+import { Pokemon } from 'src/app/model/pokemon.model';
+import { PokemonResult } from 'src/app/model/pokemon-result.model';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +14,58 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class HomeComponent implements OnInit {
 
-  pokemons: any[] = [];
-  sortText = 'Ordenar por Número';
+  barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true,
+    scales: {
+      yAxes: [
+       {
+           display: true,
+           position: 'left',
+           ticks: {
+             fontSize: 15,
+             fontColor: '#333',
+             fontFamily: 'Arial'
+           }
+       }
+     ]
+   }
+  };
+  barChartOptionsMobile = {
+    scaleShowVerticalLines: false,
+    responsive: true,
+    scales: {
+      yAxes: [
+       {
+           display: false
+       },
+      ],
+       xAxes: [{
+        display: true,
+        position: 'left',
+        ticks: {
+          fontSize: 14,
+          fontColor: '#333'
+        }
+       }
+       ]
+   }
+  };
+  barChartLabels: string[] = ['1', '2', '3', '4', '5', '6'];
+  barChartType = 'horizontalBar';
+  barChartTypeMobile = 'bar';
+  barChartLegend = false;
+  barChartData: any[] = [
+    {data: [1, 2, 3, 4, 5, 6 ]}
+  ];
+
+  listLabel: string[] = [];
+  listData: number[] = [];
+
+  pokemons: Pokemon[] = [];
   finishList = false;
   next: string = null;
-  pokemonModal: any;
+  pokemonModal: Pokemon;
 
   constructor(
     private modalService: NgbModal,
@@ -26,18 +76,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     this.open();
-    this.pokemonModal = {url: '', name: '', description: ''};
+    this.pokemonModal = new Pokemon();
+    console.log('modal ', this.pokemonModal);
     this.nextFind();
-  }
-
-  sortList(){
-    if ( this.sortText === 'Ordenar por Número' ){
-      this.sortById();
-      this.sortText = 'Ordenar por Nome';
-    } else if ( this.sortText === 'Ordenar por Nome' ){
-      this.sortByName();
-      this.sortText = 'Ordenar por Número';
-    }
   }
 
   sortById(){
@@ -60,15 +101,16 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getPokemons(url: string = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=8'){
+  getPokemons(url: string = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=12'){
     this.service.getAllPokemons(url)
       .subscribe(
-        (resp: any) => {
-          if ( !resp.next ) {
+        (resp: Pageable) => {
+          const page = resp;
+          if ( !page.next ) {
             this.finishList = true;
           }
-          this.next = resp.next;
-          this.getDataPokemons(resp.results);
+          this.next = page.next;
+          this.getDataPokemons(page.results);
           // this.pokemons = this.pokemons.concat(resp.results);
         },
         error => {
@@ -77,21 +119,22 @@ export class HomeComponent implements OnInit {
       );
   }
 
-  getDataPokemons(pokemons: any[]){
+  getDataPokemons(pokemons: PokemonResult[]){
     pokemons.forEach(el => {
       this.service.getPokemonByName(el.name)
         .subscribe(
-          resp => {
-           const pokemon: any = {};
-           pokemon.id = resp.id;
-           pokemon.name = resp.name;
+          (resp: Pokemon) => {
+           const pokemon = resp;
+           pokemon.height /= 10;
+           pokemon.weight /= 10;
+           /*pokemon.id = resp.id;
+           pokemon.name = <string> resp.name;
            pokemon.height = resp.height / 10;
            pokemon.weight = resp.weight / 10;
            pokemon.url = resp.sprites.front_default;
-           pokemon.description = 'Um testo apenas para teste';
            pokemon.abilities = resp.abilities;
            pokemon.types = resp.types;
-           pokemon.stats = resp.stats;
+           pokemon.stats = resp.stats;*/
            this.pokemons.push(pokemon);
           },
           error => {}
@@ -110,7 +153,17 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  openPokemon(pokemon: any){
+  openPokemon(pokemon: Pokemon){
+    this.listLabel = [];
+    this.listData = [];
+    pokemon.stats.forEach(p => {
+      this.listLabel.push(p.stat.name);
+      this.listData.push(p.base_stat);
+    });
+    this.barChartLabels = this.listLabel;
+    this.barChartData = [
+        {data: this.listData}
+    ];
     this.pokemonModal = pokemon;
   }
 

@@ -7,6 +7,9 @@
     margin: 20px 0;
 }
 
+/* ------------------- *\
+    Responsive Layout
+\* ------------------- */
 @media(max-width: 749px){
     .modal-text--description{
         margin: 0;
