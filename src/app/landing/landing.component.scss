@@ -62,7 +62,7 @@ $image-width: 150px;
   display: inline-block;
   overflow: hidden;
   padding: 0px 3px;
-  padding-bottom: 1px;
+  padding-bottom: 15px;
   border-radius: 1px;
 }
 
@@ -151,15 +151,6 @@ $image-width: 150px;
 }
 .electric span {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 0, 0.404), transparent);
-}
-
-@keyframes anini {
-  0% {
-    transform: rotateX(-20);
-  }
-  100% {
-    transform: rotateX(20);
-  }
 }
 
 .btn-whos {

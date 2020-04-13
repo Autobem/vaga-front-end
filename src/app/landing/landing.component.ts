@@ -25,15 +25,9 @@ import { trigger, transition, query, style, stagger, animate, keyframes } from '
   ]
 })
 export class LandingComponent implements OnInit {
-  lightBg = false;
-  pikachuHover = false;
-  sqrtlHover = false;
-  bulbaHover = false;
-  charHover = false;
 
   objectKeys = Object.keys;
   types = { fire: false, water: false, grass: false, electric: false };
-
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(['(max-width: 650px)'])
     .pipe(
