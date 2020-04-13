@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <div class="grid">
+    <div class="inner">
+      <h1>Pokesite</h1>
+      <div class="types" (click)="onClick($event.target)">
+        <div class="fire" (mouseover)="charHover=true" (mouseleave)="charHover=false">Fire!<span></span></div>
+        <div class="water" (mouseover)="sqrtlHover=true" (mouseleave)="sqrtlHover=false">Water!<span></span></div>
+        <div class="grass" (mouseover)="bulbaHover=true" (mouseleave)="bulbaHover=false">Grass!<span></span></div>
+        <div class="electric" (mouseover)="pikachuHover=true" (mouseleave)="pikachuHover=false">Electric!
+          <div id=etc>...</div>
+          <span></span>
+        </div>
+
+      </div>
+      <a routerLink='/' *ngIf="!(isHandset$ | async)" class=btn-whos>
+        <span></span><span></span><span></span><span></span>
+        Who's that Pokémon?
+      </a>
+    </div>
+    <div *ngIf="isHandset$ | async" class="action">
+      <a routerLink='/' class=btn-whos>
+        <span></span><span></span><span></span><span></span>
+        Who's that Pokémon
+      </a>
+    </div>
+    <div class="illustration">
+      <img [ngClass]="charHover|| pikachuHover || sqrtlHover || bulbaHover ?
+      'whos whos-hided' : 'whos'" src="../../assets/whos.png" alt="?">
+      <img [ngClass]="pikachuHover ? 'pikachu pikachu-hover' : 'pikachu'" src="../../assets/pikachu-logo.png"
+        alt="pikachu">
+      <img [ngClass]="sqrtlHover ? 'squirtle squirtle-hover' : 'squirtle'" src="../../assets/Squirtle.png"
+        alt="Squirtle">
+      <img [ngClass]="bulbaHover ? 'bulbasour bulbasour-hover' : 'bulbasour'" src="../../assets/bulbasour.png"
+        alt="bulbasour">
+      <img [ngClass]="charHover ? 'charmander charmander-hover' : 'charmander'" src="../../assets/charmander.png"
+        alt="charmander">
+    </div>
+  </div>
+</div>
