@@ -16,7 +16,6 @@ export class LandingComponent implements OnInit {
   bulbaHover = false;
   charHover = false;
 
-  whos = this.pikachuHover || this.sqrtlHover || this.bulbaHover;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(['(max-width: 650px)'])
   .pipe(
@@ -27,9 +26,5 @@ export class LandingComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
-  }
-
-  onClick(event: HTMLElement): void {
-    console.log(event.innerText);
   }
 }

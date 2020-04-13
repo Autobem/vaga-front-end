@@ -1,4 +1,4 @@
-@import url(https://db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
+// @import url(https://db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
 @font-face {
   font-family: "Pokemon";
   src: url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot");
@@ -14,8 +14,10 @@ $image-width: 150px;
 .wrapper {
   height: 100%;
   width: 100%;
-  background-color: rgb(19, 19, 19);
+  // background-color: rgb(19, 19, 19);
   display: block;
+  // background-image: linear-gradient( 180.4deg,  rgb(7, 19, 36) 45.3%, rgba(95,123,190,1) 279% );
+  background-image: linear-gradient(180.4deg, rgb(7, 19, 36) 50.3%, rgba(95, 123, 190, 1) 279%);
   font-family: "Pokemon";
   color: #ffcb05;
   text-shadow: -3px 0 #3b5ba7, 0 3px #3b5ba7, 3px 0 #3b5ba7, 0 -3px #3b5ba7;
@@ -61,7 +63,8 @@ $image-width: 150px;
   position: relative;
   display: inline-block;
   overflow: hidden;
-  padding: 5px 0;
+  padding: 5px 3px;
+  border-radius: 1px;
 }
 
 #etc {
@@ -133,22 +136,31 @@ $image-width: 150px;
   position: absolute;
   bottom: 0px;
   left: -100%;
-  width: 100%;
-  height: 2px;
-  animation: ani1 2s linear infinite;
+  width: 70%;
+  height: 100%;
+  animation: ani1 3s ease-in-out infinite;
 }
 
 .fire span {
-  background: linear-gradient(90deg, transparent, rgba(255, 166, 0, 0.63));
+  background: linear-gradient(90deg, transparent, rgba(255, 166, 0, 0.404), transparent);
 }
 .water span {
-  background: linear-gradient(90deg, transparent, rgba(0, 204, 255, 0.63));
+  background: linear-gradient(90deg, transparent, rgba(0, 204, 255, 0.404), transparent);
 }
 .grass span {
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 55, 0.63));
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 55, 0.404), transparent);
 }
 .electric span {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 0, 0.63));
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 0, 0.404), transparent);
+}
+
+@keyframes anini {
+  0% {
+    transform: rotateX(-20);
+  }
+  100% {
+    transform: rotateX(20);
+  }
 }
 
 .btn-whos {
@@ -162,6 +174,11 @@ $image-width: 150px;
   padding: 5px 15px;
   color: #ffcb05 !important;
   text-decoration: none;
+  transition: 0.5s;
+  &:hover{
+    background: #f8e004;
+    box-shadow: 0 0 5px #ffcb05, 0 0 25px #ffcb05, 0 0 50px #ffcb05, 0 0 200px #ffcb05;
+  }
 }
 
 .btn-whos span {
@@ -282,6 +299,9 @@ $image-width: 150px;
     }
     .types {
       font-size: 2rem;
+    }
+    .types > * {
+      padding: 5px 8px;
     }
   }
 
