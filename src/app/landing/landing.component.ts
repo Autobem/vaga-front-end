@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -28,6 +28,7 @@ export class LandingComponent implements OnInit {
 
   objectKeys = Object.keys;
   types = { fire: false, water: false, grass: false, electric: false };
+  whosClicked = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(['(max-width: 650px)'])
     .pipe(
@@ -47,5 +48,10 @@ export class LandingComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  focus() {
+    const btn: HTMLElement = document.querySelector('.btn-whos');
+    btn.focus();
   }
 }

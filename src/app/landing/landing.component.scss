@@ -1,12 +1,11 @@
-// @import url(https://db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
 @font-face {
   font-family: "Pokemon";
-  src: url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot");
-  src: url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot?#iefix") format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff2") format("woff2"),
-    url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff") format("woff"),
-    url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.ttf") format("truetype"),
-    url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.svg#Pokemon") format("svg");
+  src: url("../../assets/fonts/@font-face/f4d1593471d222ddebd973210265762a.eot");
+  src: url("../../assets/fonts/@font-face/f4d1593471d222ddebd973210265762a.eot?#iefix") format("embedded-opentype"),
+    url("../../assets/fonts/@font-face/f4d1593471d222ddebd973210265762a.woff2") format("woff2"),
+    url("../../assets/fonts/@font-face/f4d1593471d222ddebd973210265762a.woff") format("woff"),
+    url("../../assets/fonts/@font-face/f4d1593471d222ddebd973210265762a.ttf") format("truetype"),
+    url("../../assets/fonts/@font-face/f4d1593471d222ddebd973210265762a.svg#Pokemon") format("svg");
 }
 
 $image-width: 150px;
@@ -15,7 +14,7 @@ $image-width: 150px;
   height: 100%;
   width: 100%;
   display: block;
-  background-image: linear-gradient(180.4deg, rgb(7, 19, 36) 50.3%, rgba(95, 123, 190, 1) 279%);
+  // background-image: linear-gradient(180.4deg, rgb(7, 19, 36) 50.3%, rgba(95, 123, 190, 1) 279%);
   font-family: "Pokemon";
   color: #ffcb05;
   text-shadow: -3px 0 #3b5ba7, 0 3px #3b5ba7, 3px 0 #3b5ba7, 0 -3px #3b5ba7;
@@ -38,7 +37,6 @@ $image-width: 150px;
 .grid > * {
   position: relative;
   width: 100%;
-  height: 100%;
 }
 
 .grid * {
@@ -95,18 +93,12 @@ $image-width: 150px;
   text-align: center;
 }
 
-.electric-img,
-.water-img,
-.grass-img,
-.fire-img {
+.img-hide {
   clip-path: circle(0);
   transition: 0.3s ease-in-out;
 }
 
-.electric-hover,
-.water-hover,
-.grass-hover,
-.fire-hover {
+.img-hover {
   clip-path: circle(200%);
   transition: 0.3s ease-in-out;
 }
@@ -128,10 +120,10 @@ $image-width: 150px;
   filter: drop-shadow(0 0 50px yellow);
 }
 
-.fire span,
-.water span,
-.grass span,
-.electric span {
+.btn-fire span,
+.btn-water span,
+.btn-grass span,
+.btn-electric span {
   position: absolute;
   bottom: 0px;
   left: -100%;
@@ -140,16 +132,16 @@ $image-width: 150px;
   animation: ani1 3s ease-in-out infinite;
 }
 
-.fire span {
+.btn-fire span {
   background: linear-gradient(90deg, transparent, rgba(255, 166, 0, 0.404), transparent);
 }
-.water span {
+.btn-water span {
   background: linear-gradient(90deg, transparent, rgba(0, 204, 255, 0.404), transparent);
 }
-.grass span {
+.btn-grass span {
   background: linear-gradient(90deg, transparent, rgba(0, 255, 55, 0.404), transparent);
 }
-.electric span {
+.btn-electric span {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 0, 0.404), transparent);
 }
 
@@ -166,10 +158,15 @@ $image-width: 150px;
   color: #ffcb05 !important;
   text-decoration: none;
   transition: 0.5s;
-  &:hover{
+  &:hover, &:focus-within {
     background: #f8e004;
     box-shadow: 0 0 5px #ffcb05, 0 0 25px #ffcb05, 0 0 50px #ffcb05, 0 0 200px #ffcb05;
   }
+}
+
+.btn-whos--hover {
+  background: #f8e004;
+  box-shadow: 0 0 5px #ffcb05, 0 0 25px #ffcb05, 0 0 50px #ffcb05, 0 0 200px #ffcb05;
 }
 
 .btn-whos span {
@@ -274,7 +271,7 @@ $image-width: 150px;
   .grid {
     grid-template-columns: 40% 60%;
     grid-template-rows: unset;
-    max-height: 100%;
+    // max-height: 100%;
     grid-gap: 10px;
     padding-top: unset;
   }

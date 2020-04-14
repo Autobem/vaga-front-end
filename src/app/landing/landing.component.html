@@ -5,7 +5,7 @@
       <h1>Pokesite</h1>
 
       <div class="types" @typesAnimation>
-        <div *ngFor="let type of objectKeys(types)" [ngClass]="type" (mouseover)="types[type]=true"
+        <div *ngFor="let type of objectKeys(types)" class="btn-{{type}}" (mouseover)="types[type]=true"
           (mouseleave)="types[type]=false">{{type | titlecase}}!<span></span>
           <div *ngIf="type == 'electric'" id=etc> ...</div>
         </div>
@@ -27,10 +27,10 @@
     </div>
 
     <div class="illustration">
-      <img [ngClass]=" isHover() ? 'whos whos-hided' : 'whos'" src="../../assets/whos.png" alt="?">
-      <img *ngFor="let type of objectKeys(types)"
-       [ngClass]="!types[type] ? type+'-img' : type+'-img' + ' '+ type+'-hover'" [src]="'../../assets/'+type+'.png'"
-        alt={{type}}>
+      <img class="whos" (click)="focus()" [class.whos-hided]=" isHover()" src="../../assets/whos.png" alt="?">
+
+      <img *ngFor="let type of objectKeys(types)" class="{{type}}-img img-hide" [class.img-hover]="types[type]"
+        [src]="'../../assets/'+type+'.png'" alt={{type}}>
     </div>
   </div>
 </div>
