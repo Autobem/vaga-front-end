@@ -27,7 +27,7 @@
     </div>
 
     <div class="illustration">
-      <img class="whos" (click)="focus()" [class.whos-hided]=" isHover()" src="../../assets/whos.png" alt="?">
+      <img class="whos-img" (click)="focus()" [class.whos-hided]=" isHover()" src="../../assets/whos.png" alt="?">
 
       <img *ngFor="let type of objectKeys(types)" class="{{type}}-img img-hide" [class.img-hover]="types[type]"
         [src]="'../../assets/'+type+'.png'" alt={{type}}>

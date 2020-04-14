@@ -14,7 +14,6 @@ $image-width: 150px;
   height: 100%;
   width: 100%;
   display: block;
-  // background-image: linear-gradient(180.4deg, rgb(7, 19, 36) 50.3%, rgba(95, 123, 190, 1) 279%);
   font-family: "Pokemon";
   color: #ffcb05;
   text-shadow: -3px 0 #3b5ba7, 0 3px #3b5ba7, 3px 0 #3b5ba7, 0 -3px #3b5ba7;
@@ -26,7 +25,7 @@ $image-width: 150px;
   max-height: 90%;
   height: inherit;
 
-  padding-top: 10%;
+  padding-top: 15%;
   margin: 0 auto;
 
   display: grid;
@@ -76,7 +75,7 @@ $image-width: 150px;
   transform: translate(-50%);
 }
 
-.whos {
+.whos-img {
   z-index: 50;
   max-height: $image-width;
   clip-path: circle(100%);
@@ -158,7 +157,8 @@ $image-width: 150px;
   color: #ffcb05 !important;
   text-decoration: none;
   transition: 0.5s;
-  &:hover, &:focus-within {
+  &:hover,
+  &:focus-within {
     background: #f8e004;
     box-shadow: 0 0 5px #ffcb05, 0 0 25px #ffcb05, 0 0 50px #ffcb05, 0 0 200px #ffcb05;
   }
@@ -171,45 +171,41 @@ $image-width: 150px;
 
 .btn-whos span {
   position: absolute;
-}
-
-.btn-whos span:nth-child(1) {
-  top: 0px;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, yellow);
-  animation: ani1 1s linear infinite;
-}
-
-.btn-whos span:nth-child(2) {
-  top: 0px;
-  right: 0px;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, yellow);
-  animation: ani2 1s linear infinite;
-  animation-delay: 0.25s;
-}
-
-.btn-whos span:nth-child(3) {
-  bottom: 0px;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(180deg, transparent, yellow);
-  animation: ani3 1s linear infinite;
-  animation-delay: 0.5s;
-}
-
-.btn-whos span:nth-child(4) {
-  bottom: -100%;
-  left: 0px;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, yellow);
-  animation: ani4 1s linear infinite;
-  animation-delay: 0.75s;
+  &:nth-child(1) {
+    top: 0px;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, yellow);
+    animation: ani1 1s linear infinite;
+  }
+  &:nth-child(2) {
+    top: 0px;
+    right: 0px;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, yellow);
+    animation: ani2 1s linear infinite;
+    animation-delay: 0.25s;
+  }
+  &:nth-child(3) {
+    bottom: 0px;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(180deg, transparent, yellow);
+    animation: ani3 1s linear infinite;
+    animation-delay: 0.5s;
+  }
+  &:nth-child(4) {
+    bottom: -100%;
+    left: 0px;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, yellow);
+    animation: ani4 1s linear infinite;
+    animation-delay: 0.75s;
+  }
 }
 
 @keyframes ani1 {
@@ -271,9 +267,9 @@ $image-width: 150px;
   .grid {
     grid-template-columns: 40% 60%;
     grid-template-rows: unset;
-    // max-height: 100%;
+    max-height: 70%;
     grid-gap: 10px;
-    padding-top: unset;
+    padding-top: 5%;
   }
 
   .grid > * {
@@ -298,7 +294,7 @@ $image-width: 150px;
     top: 5%;
   }
 
-  .whos {
+  .whos-img {
     top: 15% !important;
     max-height: $image-width;
   }
