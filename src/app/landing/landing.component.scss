@@ -159,6 +159,7 @@ $image-width: 150px;
   transition: 0.5s;
   &:hover,
   &:focus-within {
+    outline: none;
     background: #f8e004;
     box-shadow: 0 0 5px #ffcb05, 0 0 25px #ffcb05, 0 0 50px #ffcb05, 0 0 200px #ffcb05;
   }
