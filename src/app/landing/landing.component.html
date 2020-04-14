@@ -4,7 +4,7 @@
 
       <h1>Pokesite</h1>
 
-      <div class="types" @typesAnimation>
+      <div class="types" @bounceAnimation>
         <div *ngFor="let type of objectKeys(types)" class="btn-{{type}}" (mouseover)="types[type]=true"
           (mouseleave)="types[type]=false">{{type | titlecase}}!<span></span>
           <div *ngIf="type == 'electric'" id=etc> ...</div>
@@ -12,7 +12,7 @@
       </div>
 
       <!-- desktop button -->
-      <a routerLink='/' *ngIf="!(isHandset$ | async)" class=btn-whos>
+      <a routerLink='/search' *ngIf="!(isHandset$ | async)" class=btn-whos>
         <span></span><span></span><span></span><span></span>
         Who's that Pokémon?
       </a>
@@ -20,7 +20,7 @@
 
     <!-- mobile button -->
     <div *ngIf="isHandset$ | async" class="action">
-      <a routerLink='/' class=btn-whos>
+      <a routerLink='/search' class=btn-whos>
         <span></span><span></span><span></span><span></span>
         Who's that Pokémon
       </a>

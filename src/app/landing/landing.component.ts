@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { trigger, transition, query, style, stagger, animate, keyframes } from '@angular/animations';
+import { bounce } from '../_animations/landing.animation';
 
 
 @Component({
@@ -10,18 +10,7 @@ import { trigger, transition, query, style, stagger, animate, keyframes } from '
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],
   animations: [
-    trigger('typesAnimation', [
-      transition('* => *', [
-        query(':enter', style({ opacity: 0 }), { optional: true }),
-        query(':enter', stagger('300ms', [
-          animate('1s linear', keyframes([
-            style({ opacity: 0, transform: 'translateY(-75px)', offset: 0 }),
-            style({ opacity: .5, transform: 'translateY(20px)', offset: 0.3 }),
-            style({ opacity: 1, transform: 'translateY(0)', offset: 1 })
-          ]))
-        ]))
-      ])
-    ])
+    bounce
   ]
 })
 export class LandingComponent implements OnInit {

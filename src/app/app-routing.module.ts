@@ -7,11 +7,13 @@ import { SearchingComponent } from './searching/searching.component';
 const routes: Routes = [
   {
     path: '',
-    component: LandingComponent
+    component: LandingComponent,
+    data: {animation: 'landing'}
   },
   {
     path: 'search',
-    component: SearchingComponent
+    component: SearchingComponent,
+    data: {animation: 'searching'}
   }
 ];
 
