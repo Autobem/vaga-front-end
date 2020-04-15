@@ -1,17 +1,45 @@
 <div class="container">
-
-  <h1>PokeWiki</h1>
-
-  <div class="grid">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">@</span>
-      </div>
-      <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-        aria-describedby="basic-addon1">
-    </div>
+  <div class="row">
+    <h2>PokeWiki</h2>
   </div>
 
-  <button type="button" routerLink="/" class="btn btn-dark">Dark</button>
+  <form [formGroup]="searchForm">
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Pokemon name</mat-label>
+          <input #name matInput formControlName='pokename' maxlength="100" placeholder="Ex. pikachu">
+          <mat-hint align="end">{{name.value.length}} / 100 </mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <!-- poketype (select Many) -->
+        <mat-form-field>
+          <mat-label>PokeType</mat-label>
+          <mat-select formControlName="poketype" multiple>
+            <mat-select-trigger>
+              {{searchForm.get('poketype').value ? searchForm.get('poketype').value[0] : ''}}
+              <span *ngIf="searchForm.get('poketype').value?.length > 1" class="additional-selection">
+                (+{{searchForm.get('poketype').value.length - 1}}
+                {{searchForm.get('poketype').value?.length === 2 ? 'other' : 'others'}})
+              </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let type of typeList | async" [value]="type | titlecase"> {{type | titlecase}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
 
+
+  <div class="row display">
+    <app-pokemon-view [class.col-lg]="!(isHandset$ | async)" *ngFor="let result of resultList | async"
+      [url]="result.url" [name]="result.name">
+    </app-pokemon-view>
+  </div>
+
+  <div class="row">
+    <button type="button" routerLink="/" class="btn btn-dark btn-back">Back</button>
+  </div>
 </div>

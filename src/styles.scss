@@ -1,8 +1,21 @@
-
-html, body { height: 100%; width: 100%; }
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-image: linear-gradient(180.4deg, rgb(7, 19, 36) 50.3%, rgba(95, 123, 190, 1) 279%);
+}
+
+@font-face {
+  font-family: "Pokemon";
+  src: url("./assets/fonts/@font-face/f4d1593471d222ddebd973210265762a.eot");
+  src: url("./assets/fonts/@font-face/f4d1593471d222ddebd973210265762a.eot?#iefix") format("embedded-opentype"),
+    url("./assets/fonts/@font-face/f4d1593471d222ddebd973210265762a.woff2") format("woff2"),
+    url("./assets/fonts/@font-face/f4d1593471d222ddebd973210265762a.woff") format("woff"),
+    url("./assets/fonts/@font-face/f4d1593471d222ddebd973210265762a.ttf") format("truetype"),
+    url("./assets/fonts/@font-face/f4d1593471d222ddebd973210265762a.svg#Pokemon") format("svg");
 }

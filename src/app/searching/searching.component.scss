@@ -1,4 +1,39 @@
 .container {
   padding-top: 5%;
-  color: #ffcb05;
+  max-width: 90% !important;
+  color: rgb(19, 188, 255);
+  width: 100%;
+  display: block;
+  position: relative;
 }
+
+.row {
+  position: relative;
+}
+
+h2 {
+  font-family: "Pokemon";
+  color: #ffcb05;
+  text-shadow: -3px 0 #3b5ba7, 0 3px #3b5ba7, 3px 0 #3b5ba7, 0 -3px #3b5ba7;
+}
+
+.additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.display {
+  max-height: 55vh !important;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.btn-back {
+  margin: 0 auto;
+  margin-top: 5%;
+}
+

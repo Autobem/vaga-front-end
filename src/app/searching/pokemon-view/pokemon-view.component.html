@@ -1,0 +1,5 @@
+
+<div *ngIf="preview | async as poke" class="preview">
+  <img [src]="poke?.sprites?.front_default" alt="{{poke.name}}">
+  <p>{{name | titlecase}}</p>
+</div>
