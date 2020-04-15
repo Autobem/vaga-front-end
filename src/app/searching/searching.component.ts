@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { SearchingFectherService } from './searching-fetcher.service';
 import { Observable } from 'rxjs';
-import { Pokemon } from '../shared/models/pokemon';
-import { Results } from '../shared/models/api-list';
+import { Results, ApiList } from '../shared/models/api-list';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -17,11 +15,16 @@ import { map, shareReplay } from 'rxjs/operators';
 
 export class SearchingComponent implements OnInit {
 
+  ceil = Math.ceil;
+
   searchForm: FormGroup;
+
+  itemPerPage: number;
 
   typeList: Observable<string[]>;
   resultList: Observable<Results[]>;
 
+  pagination: Observable<ApiList> = this.service.getPagination();
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(['(max-width: 650px)'])
   .pipe(
     map(result => result.matches),
@@ -31,7 +34,6 @@ export class SearchingComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute,
     private service: SearchingFectherService) { }
 
   ngOnInit(): void {
@@ -41,6 +43,11 @@ export class SearchingComponent implements OnInit {
       poketype: [''],
       pokename: [''],
     });
+    this.itemPerPage = this.service.itemPerPage;
+  }
+
+  paginate(url) {
+    this.resultList = this.service.pokeFecth(url);
   }
 
 }

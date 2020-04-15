@@ -26,14 +26,42 @@ mat-form-field {
   width: 100%;
 }
 
+.mat-paginator {
+  border-radius: 30px;
+  background-color: royalblue;
+}
+
 .display {
   max-height: 55vh !important;
   justify-content: center;
   overflow-y: auto;
 }
 
-.btn-back {
+.actions {
   margin: 0 auto;
-  margin-top: 5%;
+  margin-top: 10%;
 }
 
+.page-link {
+  background-color: transparent;
+  border: 1px thin blanchedalmond;
+  font-size: 0.8em;
+}
+
+.disabled {
+  pointer-events: none !important;
+  color: gray !important;
+  outline: none !important;
+}
+
+@media (max-height: 640px) {
+  .display {
+    max-height: 50vh !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-link {
+    font-size: 0.8em;
+  }
+}

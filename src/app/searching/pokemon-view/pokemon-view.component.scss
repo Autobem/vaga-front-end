@@ -2,3 +2,14 @@
   margin: 5px;
   text-align: center;
 }
+
+p {
+  font-size: 0.9em;
+}
+
+@media (max-height: 640px)
+ {
+  p {
+    font-size: 0.8em;
+  }
+}

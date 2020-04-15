@@ -7,5 +7,6 @@ export interface ApiList {
   count: number;
   next: string;
   previous: string;
-  results: Results[];
+  page?: number;
+  results?: Results[];
 }
