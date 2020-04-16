@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SearchingFectherService } from './searching-fetcher.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Results, ApiList } from '../shared/models/api-list';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
@@ -26,10 +26,10 @@ export class SearchingComponent implements OnInit {
 
   pagination: Observable<ApiList> = this.service.getPagination();
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(['(max-width: 650px)'])
-  .pipe(
-    map(result => result.matches),
-    shareReplay()
-  );
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -47,7 +47,23 @@ export class SearchingComponent implements OnInit {
   }
 
   paginate(url) {
-    this.resultList = this.service.pokeFecth(url);
+    this.resultList = this.service.pokeListPaginated(url);
+  }
+
+  search() {
+    const poketype = this.searchForm.get('poketype').value;
+    const pokename = this.searchForm.get('pokename').value;
+
+    console.log(poketype);
+    if (!!poketype && poketype.length > 0) {
+      this.resultList = this.service.fetchByTypes(poketype);
+    } else {
+      if (!!pokename) {
+        this.resultList = this.service.fetchByNameOrNumber(pokename);
+      } else {
+        this.resultList = this.service.pokemonList();
+      }
+    }
   }
 
 }

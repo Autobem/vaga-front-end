@@ -42,12 +42,18 @@
   <div class="row">
     <nav class="actions" *ngIf="pagination | async as poke">
       <ul class="pagination pagination-lg">
-        <li class="page-item" [class.disabled]="poke?.previous == null">
-          <div class="page-link" (click)="paginate(poke?.previous)" tabindex="-1"> < </div>
-        </li>
-        <li class="page-item"><div class="page-link"> {{poke?.page}} / {{ceil(poke?.count/20)}}</div></li>
-        <li class="page-item" [class.disabled]="poke?.next == null"><div class="page-link" (click)="paginate(poke?.next)"> > </div></li>
         <li class="page-item"><a type="button" routerLink="/" class="page-link btn-dark">Back</a></li>
+        <li class="page-item" [class.disabled]="poke?.previous == null">
+          <div class="page-link" (click)="paginate(poke?.previous)" tabindex="-1">
+            < </div>
+        </li>
+        <li class="page-item">
+          <div class="page-link" style="cursor: default;"> {{poke?.page}} / {{ceil(poke?.count/20)}}</div>
+        </li>
+        <li class="page-item" [class.disabled]="poke?.next == null">
+          <div class="page-link" (click)="paginate(poke?.next)"> > </div>
+        </li>
+        <li class="page-item"><a type="button" (click)="search()" class="page-link btn-dark">Search</a></li>
       </ul>
     </nav>
   </div>

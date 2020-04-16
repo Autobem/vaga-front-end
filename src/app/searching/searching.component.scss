@@ -46,12 +46,17 @@ mat-form-field {
   background-color: transparent;
   border: 1px thin blanchedalmond;
   font-size: 0.8em;
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #13bcff;
 }
 
-.disabled {
+.page-item.disabled {
   pointer-events: none !important;
-  color: gray !important;
   outline: none !important;
+  .page-link {
+    background-color: transparent;
+  }
 }
 
 @media (max-height: 640px) {
@@ -60,8 +65,9 @@ mat-form-field {
   }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 600px) {
   .page-link {
-    font-size: 0.8em;
+    font-size: 1em;
+    padding: 10px 20px;
   }
 }

@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, tap } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { map, tap, mergeMap } from 'rxjs/operators';
+import { Observable, Subject, of, concat, merge } from 'rxjs';
 import { Pokemon } from '../shared/models/pokemon';
 import { ApiList, Results } from '../shared/models/api-list';
+import { PokeType } from '../shared/models/poketype';
 
 
 const API = 'https://pokeapi.co/api/v2/';
@@ -38,17 +39,9 @@ export class SearchingFectherService {
         }));
   }
 
-  pokemonList(): Observable<Results[]> {
-    return this.http.get<ApiList>(API + 'pokemon')
-      .pipe(
-        tap(resp => {
-          resp.page = this.getPageNumber(resp);
-          this.apiSubject.next(resp);
-        }),
-        map(resp => resp.results));
-  }
-
-  pokeFecth(url): Observable<Results[]> {
+  pokemonList(url = API + 'pokemon'): Observable<Results[]> {
+    // url = url.split('limit')[0] + `limit=${this.itemPerPage}`;
+    console.log(url);
     return this.http.get<ApiList>(url)
       .pipe(
         tap(resp => {
@@ -58,12 +51,52 @@ export class SearchingFectherService {
         map(resp => resp.results));
   }
 
+  pokeListPaginated(url) {
+    url = url.split('limit')[0] + `limit=${this.itemPerPage}`;
+    return this.pokemonList(url);
+  }
+
   fetchPokemonsPreview(url): Observable<Pokemon> {
     return this.http.get<Pokemon>(url);
   }
 
   fetchPokemon(url): Observable<Pokemon> {
     return this.http.get<Pokemon>(url);
+  }
+
+  fetchByTypes(types: string[]): Observable<Results[]> {
+
+    this.apiSubject.next({ count: 1, next: null, previous: null });
+
+    const output: Results[] = [];
+
+    types.map(type => {
+      return this.http.get<PokeType>(API + `type/${type.toLowerCase()}`)
+        .pipe(
+          map(resp => resp.pokemon.map(poke => poke.pokemon))
+        );
+    })
+      .map(it => {
+        it.subscribe(a => {
+          a.map(b => output.push(b));
+        });
+      });
+
+    return of(output);
+
+    // return concat(... types.map(type => {
+    //   return this.http.get<PokeType>(API + `type/${type.toLowerCase()}`)
+    //     .pipe(
+    //       map(resp => resp.pokemon.map(poke => poke.pokemon))
+    //     );
+    // }));
+  }
+
+  fetchByNameOrNumber(identification): Observable<Results[]> {
+    const result: Results[] = [];
+    result.push({ name: identification, url: API + `pokemon/${identification?.toLowerCase()}` });
+    this.apiSubject.next({ count: 1, next: null, previous: null });
+    return of(result);
   }
 
 }
