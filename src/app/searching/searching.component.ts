@@ -54,7 +54,6 @@ export class SearchingComponent implements OnInit {
     const poketype = this.searchForm.get('poketype').value;
     const pokename = this.searchForm.get('pokename').value;
 
-    console.log(poketype);
     if (!!poketype && poketype.length > 0) {
       this.resultList = this.service.fetchByTypes(poketype);
     } else {

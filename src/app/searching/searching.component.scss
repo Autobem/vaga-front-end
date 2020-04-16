@@ -35,6 +35,21 @@ mat-form-field {
   max-height: 55vh !important;
   justify-content: center;
   overflow-y: auto;
+  // --scrollbarBG:  linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
+  --scrollbarBG: linear-gradient(to bottom, rgba(24, 151, 201, 0.336), transparent );
+  --thumbBG: linear-gradient(to top, #008aff, #00ffe7);
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 30px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--thumbBG);
+    border-radius: 30px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+    border-radius: 30px;
+  }
 }
 
 .actions {
@@ -66,6 +81,12 @@ mat-form-field {
 }
 
 @media (min-width: 600px) {
+  .display {
+    max-height: 50vh !important;
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+  }
   .page-link {
     font-size: 1em;
     padding: 10px 20px;

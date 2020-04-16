@@ -40,7 +40,6 @@ export class SearchingFectherService {
   }
 
   pokemonList(url = API + 'pokemon'): Observable<Results[]> {
-    // url = url.split('limit')[0] + `limit=${this.itemPerPage}`;
     console.log(url);
     return this.http.get<ApiList>(url)
       .pipe(
@@ -83,13 +82,6 @@ export class SearchingFectherService {
       });
 
     return of(output);
-
-    // return concat(... types.map(type => {
-    //   return this.http.get<PokeType>(API + `type/${type.toLowerCase()}`)
-    //     .pipe(
-    //       map(resp => resp.pokemon.map(poke => poke.pokemon))
-    //     );
-    // }));
   }
 
   fetchByNameOrNumber(identification): Observable<Results[]> {
