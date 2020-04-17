@@ -76,12 +76,12 @@ export const slider =
   ]);
 
 export const fade =
-  trigger('myInsertRemoveTrigger', [
+  trigger('fade', [
     transition(':enter', [
       style({ opacity: 0 }),
-      animate('1s', style({ opacity: 1 })),
+      animate('0.5s ease', style({ opacity: 1 })),
     ]),
     transition(':leave', [
-      animate('1s', style({ opacity: 0 }))
+      animate('0.4s ease', style({ opacity: 0 }))
     ])
   ]);

@@ -1,0 +1,75 @@
+<div class="content">
+  <div *ngIf="pokemon$ | async as poke" class="pokemon">
+
+    <img [src]="poke?.sprites?.front_default" alt="{{poke.name}}">
+
+    <p class="name" [ngStyle]="{color: poke.speciePopulated.color.name}">{{poke.name | titlecase}}</p>
+
+    <div class="info">
+
+      <div class="types">
+        <div *ngFor="let type of poke?.types">
+          {{type.type.name | titlecase}}
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="col">
+          <div class="measures">
+            <p [ngStyle]="{color: poke.speciePopulated.color.name}">Measures</p>
+            <div>Height: {{poke.height}}</div>
+            <div>Weight: {{poke.weight}}</div>
+          </div>
+
+          <div class="abilities">
+            <p [ngStyle]="{color: poke.speciePopulated.color.name}">Abilities:</p>
+            <div *ngFor="let ability of poke.abilities">
+              {{ability.ability.name | titlecase}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <p [ngStyle]="{color: poke.speciePopulated.color.name}">Specie details: </p>
+          <div class="specie">
+            <div> Base happiness: {{poke.speciePopulated.base_happiness}}</div>
+            <div> Capture rate: {{poke.speciePopulated.capture_rate}}</div>
+            <div> Grow rate: {{poke.speciePopulated.growth_rate.name}}</div>
+            <div> Habitat: {{poke.speciePopulated.habitat.name}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Evolution and Stats -->
+      <div class="evolvAndStats">
+        <div>
+          <p [ngStyle]="{color: poke.speciePopulated.color.name}"> Evolution Chain</p>
+
+          <div class="evolution"
+          [ngStyle]="{ 'background': poke.speciePopulated.color.name }">
+            <app-pokemon-view *ngFor="let result of poke.evolutionPopulated"
+              [result$]="fetchPokemonBySpecieUrl(result.url)"></app-pokemon-view>
+          </div>
+        </div>
+
+        <p [ngStyle]="{color: poke.speciePopulated.color.name}">Stats: </p>
+        <div class="stats">
+          <table>
+            <tr *ngFor="let stat of poke.stats">
+              <td >
+                {{stat.stat.name | titlecase}}:
+              </td>
+              <td >
+                {{stat.base_stat}}%
+              </td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+
+      <!-- end info -->
+    </div>
+
+  </div>
+</div>

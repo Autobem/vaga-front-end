@@ -1,21 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SearchingFectherService } from './searching-fetcher.service';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Results, ApiList } from '../shared/models/api-list';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
+import { fade } from '../_animations/route.animation';
 
 @Component({
   selector: 'app-searching',
   templateUrl: './searching.component.html',
-  styleUrls: ['./searching.component.scss']
+  styleUrls: ['./searching.component.scss'],
+  animations: [
+    fade
+  ]
 })
 
 
 export class SearchingComponent implements OnInit {
 
   ceil = Math.ceil;
+
+  urlModal: string;
 
   searchForm: FormGroup;
 

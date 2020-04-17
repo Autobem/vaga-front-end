@@ -7,9 +7,19 @@ p {
   font-size: 0.9em;
 }
 
-@media (max-height: 640px)
- {
+@media (max-height: 640px) {
   p {
     font-size: 0.8em;
   }
+}
+
+.myModal {
+  display: block;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 1);
+  height: 100vh;
+  width: 100vw;
 }

@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, tap, mergeMap } from 'rxjs/operators';
+import { map, tap, mergeMap, concatAll } from 'rxjs/operators';
 import { Observable, Subject, of, concat, merge } from 'rxjs';
 import { Pokemon } from '../shared/models/pokemon';
 import { ApiList, Results } from '../shared/models/api-list';
 import { PokeType } from '../shared/models/poketype';
+import { PokeSpecie } from '../shared/models/pokespecie';
+import { EvolutionChain } from '../shared/models/evolution-chain';
 
 
 const API = 'https://pokeapi.co/api/v2/';
@@ -59,8 +61,39 @@ export class SearchingFectherService {
     return this.http.get<Pokemon>(url);
   }
 
-  fetchPokemon(url): Observable<Pokemon> {
-    return this.http.get<Pokemon>(url);
+  fetchPokemonDetails(url): Observable<Pokemon> {
+    return this.http.get<Pokemon>(url)
+      .pipe(
+        mergeMap(pokemon => {
+          return this.http.get<PokeSpecie>(pokemon.species.url).pipe(
+            map(specie => {
+              pokemon.speciePopulated = specie;
+              return pokemon;
+            }));
+        }),
+        mergeMap(pokemon => {
+          return this.http.get<EvolutionChain>(pokemon.speciePopulated.evolution_chain.url).pipe(
+            map(evol => {
+              pokemon.evolutionPopulated = [];
+              pokemon.evolutionPopulated.push(evol.chain?.species);
+              let result: Results = evol.chain?.evolves_to[0]?.species;
+              if (result !== undefined) {
+                pokemon.evolutionPopulated.push(result);
+                result = evol.chain?.evolves_to[0]?.evolves_to[0]?.species;
+                if (result !== undefined) {
+                  pokemon.evolutionPopulated.push(result);
+                }
+              }
+              return pokemon;
+            }));
+        })
+      );
+  }
+
+  fetchPokemonBySpecie(url): Observable<Results> {
+    return this.http.get<PokeSpecie>(url).pipe(
+      map(resp => resp.varieties[0].pokemon)
+    );
   }
 
   fetchByTypes(types: string[]): Observable<Results[]> {

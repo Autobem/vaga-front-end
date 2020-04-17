@@ -4,11 +4,21 @@
   color: rgb(19, 188, 255);
   width: 100%;
   display: block;
-  position: relative;
 }
 
-.row {
-  position: relative;
+.myModal {
+  display: block;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  height: 100vh;
+  max-height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-y: scroll;
+  transition: 2s;
 }
 
 h2 {
@@ -35,8 +45,10 @@ mat-form-field {
   max-height: 55vh !important;
   justify-content: center;
   overflow-y: auto;
-  // --scrollbarBG:  linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
-  --scrollbarBG: linear-gradient(to bottom, rgba(24, 151, 201, 0.336), transparent );
+}
+.display,
+.myModal {
+  --scrollbarBG: linear-gradient(to bottom, rgba(24, 151, 201, 0.336), transparent);
   --thumbBG: linear-gradient(to top, #008aff, #00ffe7);
   &::-webkit-scrollbar {
     width: 5px;

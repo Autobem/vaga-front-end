@@ -1,4 +1,5 @@
 import { Results } from './api-list';
+import { PokeSpecie } from './pokespecie';
 
 interface Types {
   slot: number;
@@ -16,7 +17,10 @@ export interface Pokemon {
   height: number;
   weight: number;
   sprites: Sprites;
-  types?: Types[];
-  abilities?: {ability: Results};
-  evolution?: Pokemon[];
+  species: Results;
+  stats: {base_stat: number, stat: Results }[];
+  types: Types[];
+  abilities: {ability: Results}[];
+  evolutionPopulated?: Results[];
+  speciePopulated?: PokeSpecie;
 }
