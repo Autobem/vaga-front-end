@@ -14,6 +14,7 @@ export class PokemonViewComponent implements OnInit, OnDestroy {
   modal = false;
 
   @Input() result: Results;
+  @Input() styles;
   @Input() result$: Observable<Results>;
   @Output() pokeClick = new EventEmitter();
 

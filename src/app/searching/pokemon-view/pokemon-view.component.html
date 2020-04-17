@@ -1,4 +1,4 @@
 <div *ngIf="preview$ | async as poke" class="preview">
   <img (click)="onClick()" [src]="poke?.sprites?.front_default" alt="{{poke?.name}}">
-  <p>{{poke?.name | titlecase}}</p>
+  <p [ngStyle]="styles" >{{poke?.name | titlecase}}</p>
 </div>

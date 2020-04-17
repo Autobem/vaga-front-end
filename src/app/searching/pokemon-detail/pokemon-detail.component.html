@@ -45,9 +45,8 @@
         <div>
           <p [ngStyle]="{color: poke.speciePopulated.color.name}"> Evolution Chain</p>
 
-          <div class="evolution"
-          [ngStyle]="{ 'background': poke.speciePopulated.color.name }">
-            <app-pokemon-view *ngFor="let result of poke.evolutionPopulated"
+          <div class="evolution" [ngStyle]="{ 'background': poke.speciePopulated.color.name }">
+            <app-pokemon-view *ngFor="let result of poke.evolutionPopulated" [styles]="{'mix-blend-mode': 'difference'}"
               [result$]="fetchPokemonBySpecieUrl(result.url)"></app-pokemon-view>
           </div>
         </div>
@@ -56,10 +55,10 @@
         <div class="stats">
           <table>
             <tr *ngFor="let stat of poke.stats">
-              <td >
+              <td>
                 {{stat.stat.name | titlecase}}:
               </td>
-              <td >
+              <td>
                 {{stat.base_stat}}%
               </td>
             </tr>
