@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, tap, mergeMap, concatAll } from 'rxjs/operators';
-import { Observable, Subject, of, concat, merge } from 'rxjs';
+import { map, tap, mergeMap } from 'rxjs/operators';
+import { Observable, Subject, of } from 'rxjs';
 import { Pokemon } from '../shared/models/pokemon';
 import { ApiList, Results } from '../shared/models/api-list';
 import { PokeType } from '../shared/models/poketype';
@@ -42,7 +42,6 @@ export class SearchingFectherService {
   }
 
   pokemonList(url = API + 'pokemon'): Observable<Results[]> {
-    console.log(url);
     return this.http.get<ApiList>(url)
       .pipe(
         tap(resp => {

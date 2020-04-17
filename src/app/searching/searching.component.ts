@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SearchingFectherService } from './searching-fetcher.service';
 import { Observable } from 'rxjs';
 import { Results, ApiList } from '../shared/models/api-list';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { map, shareReplay, filter } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { fade } from '../_animations/route.animation';
 
 @Component({
@@ -52,6 +52,22 @@ export class SearchingComponent implements OnInit {
     this.itemPerPage = this.service.itemPerPage;
   }
 
+  @HostListener('document:keydown', ['$event'])
+  keyEventListener(event: KeyboardEvent): void {
+    switch (event.key) {
+      case 'Escape':
+        this.urlModal = null;
+        break;
+      case 'Enter':
+        if (!this.urlModal) {
+          this.search();
+        }
+        break;
+      default:
+        break;
+    }
+
+  }
   paginate(url) {
     this.resultList = this.service.pokeListPaginated(url);
   }

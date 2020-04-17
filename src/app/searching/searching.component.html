@@ -3,7 +3,7 @@
     <h2>PokeWiki</h2>
   </div>
 
-  <form [formGroup]="searchForm">
+  <form [formGroup]="searchForm" (submit)="search()">
     <div class="row">
       <div class="col">
         <mat-form-field>
@@ -30,36 +30,36 @@
         </mat-form-field>
       </div>
     </div>
-  </form>
 
-
-  <div class="row display">
-    <app-pokemon-view [class.col-lg]="!(isHandset$ | async)" *ngFor="let result of resultList | async" [result]="result"
-      (pokeClick)="urlModal = $event">
-    </app-pokemon-view>
-    <div *ngIf="urlModal" @fade class="myModal" (click)="urlModal = null">
-      <div>
-        <app-pokemon-detail [url]="urlModal"></app-pokemon-detail>
+    <div class="row display">
+      <app-pokemon-view [class.col-lg]="!(isHandset$ | async)" *ngFor="let result of resultList | async"
+        [result]="result" (pokeClick)="urlModal = $event">
+      </app-pokemon-view>
+      <div *ngIf="urlModal" @fade class="myModal"  (click)="urlModal = null">
+        <div>
+          <app-pokemon-detail [url]="urlModal"></app-pokemon-detail>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <nav class="actions" *ngIf="pagination | async as poke">
-      <ul class="pagination pagination-lg">
-        <li class="page-item"><a type="button" routerLink="/" class="page-link btn-dark">Back</a></li>
-        <li class="page-item" [class.disabled]="poke?.previous == null">
-          <div class="page-link" (click)="paginate(poke?.previous)" tabindex="-1">
-            < </div>
-        </li>
-        <li class="page-item">
-          <div class="page-link" style="cursor: default;"> {{poke?.page}} / {{ceil(poke?.count/20)}}</div>
-        </li>
-        <li class="page-item" [class.disabled]="poke?.next == null">
-          <div class="page-link" (click)="paginate(poke?.next)"> > </div>
-        </li>
-        <li class="page-item"><a type="button" (click)="search()" class="page-link btn-dark">Search</a></li>
-      </ul>
-    </nav>
-  </div>
+    <div class="row">
+      <nav class="actions" *ngIf="pagination | async as poke">
+        <ul class="pagination pagination-lg">
+          <li class="page-item"><a type="button" routerLink="/" class="page-link btn-dark">Back</a></li>
+          <li class="page-item" [class.disabled]="poke?.previous == null">
+            <a type="button" class="page-link" (click)="paginate(poke?.previous)">
+              < </a>
+          </li>
+          <li class="page-item">
+            <div class="page-link" style="cursor: default;"> {{poke?.page}} / {{ceil(poke?.count/20)}}</div>
+          </li>
+          <li class="page-item" [class.disabled]="poke?.next == null">
+            <a type="button" class="page-link" (click)="paginate(poke?.next)"> > </a>
+          </li>
+          <li class="page-item"><a type="button" (click)="search()" class="page-link btn-dark">Search</a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </form>
 </div>
