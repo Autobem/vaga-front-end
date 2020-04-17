@@ -4,7 +4,7 @@ import { SearchingFectherService } from './searching-fetcher.service';
 import { Observable } from 'rxjs';
 import { Results, ApiList } from '../shared/models/api-list';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { map, shareReplay } from 'rxjs/operators';
+import { map, shareReplay, filter } from 'rxjs/operators';
 import { fade } from '../_animations/route.animation';
 
 @Component({
@@ -61,7 +61,11 @@ export class SearchingComponent implements OnInit {
     const pokename = this.searchForm.get('pokename').value;
 
     if (!!poketype && poketype.length > 0) {
-      this.resultList = this.service.fetchByTypes(poketype);
+      if (!!pokename) {
+        this.resultList = this.service.fetchByTypesAndName(poketype, pokename);
+      } else {
+        this.resultList = this.service.fetchByTypes(poketype);
+      }
     } else {
       if (!!pokename) {
         this.resultList = this.service.fetchByNameOrNumber(pokename);

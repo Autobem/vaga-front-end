@@ -117,6 +117,29 @@ export class SearchingFectherService {
     return of(output);
   }
 
+  fetchByTypesAndName(types: string[], pokename: string): Observable<Results[]> {
+
+    this.apiSubject.next({ count: 1, next: null, previous: null });
+
+    const output: Results[] = [];
+
+    types.map(type => {
+      return this.http.get<PokeType>(API + `type/${type.toLowerCase()}`)
+        .pipe(map(resp => resp.pokemon.map(poke => poke.pokemon)));
+    }).map(it => {
+      it.subscribe(a => {
+        a.map(b => {
+          if (b.name === pokename) {
+            output.push(b);
+          }
+        });
+      });
+    });
+
+    return of(output);
+  }
+
+
   fetchByNameOrNumber(identification): Observable<Results[]> {
     const result: Results[] = [];
     result.push({ name: identification, url: API + `pokemon/${identification?.toLowerCase()}` });
