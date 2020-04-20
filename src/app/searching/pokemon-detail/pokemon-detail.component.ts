@@ -22,9 +22,7 @@ export class PokemonDetailComponent implements OnInit, OnChanges {
 
   constructor(private service: SearchingFectherService) { }
 
-  ngOnInit(): void {
-    this.pokemon$ = this.service.fetchPokemonDetails(this.url);
-  }
+  ngOnInit(): void { }
 
   ngOnChanges(): void {
     this.pokemon$ = this.service.fetchPokemonDetails(this.url);

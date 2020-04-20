@@ -97,6 +97,11 @@ export class SearchingComponent implements OnInit {
     }
   }
 
+  updateModal(event) {
+    document.getElementsByClassName('myModal')[0].scrollTo( 0, 0 );
+    this.urlModal = event;
+  }
+
 }
 
 

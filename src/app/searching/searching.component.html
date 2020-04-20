@@ -37,7 +37,7 @@
       </app-pokemon-view>
       <div id="modal" *ngIf="urlModal" @fade class="myModal" (click)="deactivateModal($event.target)">
         <div>
-          <app-pokemon-detail [url]="urlModal" (childEvent)="urlModal = $event"></app-pokemon-detail>
+          <app-pokemon-detail [url]="urlModal" (childEvent)="updateModal($event)"></app-pokemon-detail>
         </div>
       </div>
     </div>
