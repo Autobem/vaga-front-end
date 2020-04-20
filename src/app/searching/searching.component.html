@@ -35,9 +35,9 @@
       <app-pokemon-view [class.col-lg]="!(isHandset$ | async)" *ngFor="let result of resultList | async"
         [result]="result" (pokeClick)="urlModal = $event">
       </app-pokemon-view>
-      <div *ngIf="urlModal" @fade class="myModal"  (click)="urlModal = null">
+      <div id="modal" *ngIf="urlModal" @fade class="myModal" (click)="deactivateModal($event.target)">
         <div>
-          <app-pokemon-detail [url]="urlModal"></app-pokemon-detail>
+          <app-pokemon-detail [url]="urlModal" (childEvent)="urlModal = $event"></app-pokemon-detail>
         </div>
       </div>
     </div>

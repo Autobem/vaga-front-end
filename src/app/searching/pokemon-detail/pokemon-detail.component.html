@@ -1,5 +1,5 @@
 <div class="content">
-  <div *ngIf="pokemon$ | async as poke" class="pokemon">
+  <div *ngIf="pokemon$ | async as poke" class="pokemon" @fade>
 
     <img [src]="poke?.sprites?.front_default" alt="{{poke.name}}">
 
@@ -47,7 +47,7 @@
 
           <div class="evolution" [ngStyle]="{ 'background': poke.speciePopulated.color.name }">
             <app-pokemon-view *ngFor="let result of poke.evolutionPopulated" [styles]="{'mix-blend-mode': 'difference'}"
-              [result$]="fetchPokemonBySpecieUrl(result.url)"></app-pokemon-view>
+              [result$]="fetchPokemonBySpecieUrl(result.url)" (pokeClick)="childEvent.emit($event)" ></app-pokemon-view>
           </div>
         </div>
 

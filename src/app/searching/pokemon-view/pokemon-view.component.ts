@@ -29,13 +29,14 @@ export class PokemonViewComponent implements OnInit, OnDestroy {
       this.preview$ = this.service.fetchPokemonsPreview(this.result.url);
     } else {
       this.sub = this.result$.subscribe(result => {
+        this.result = result;
         this.preview$ = this.service.fetchPokemonsPreview(result.url);
       });
     }
   }
 
   onClick() {
-    this.pokeClick.emit(this.result.url);
+    this.pokeClick.emit(this.result?.url);
   }
 
   ngOnDestroy(): void {

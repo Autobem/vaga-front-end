@@ -91,6 +91,12 @@ export class SearchingComponent implements OnInit {
     }
   }
 
+  deactivateModal(target: Element) {
+    if (target.nodeName === 'DIV') {
+      this.urlModal = null;
+    }
+  }
+
 }
 
 
