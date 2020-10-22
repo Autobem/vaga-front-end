@@ -1,3 +1,7 @@
+# Instalação
+
+Digite `npm install` no console dentro da pasta do projeto e depois `ng serve --open` para iniciar o projeto, será aberto uma aba no seu browser automaticamente. 
+
 # Pokemon
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
