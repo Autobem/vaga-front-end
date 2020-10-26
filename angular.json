@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Teste-Autobem"
+    }
+  },
+  "defaultProject": "Teste-Autobem",
+  "cli": {
+    "analytics": "00a2072f-f01a-41c6-b09b-229c46a125c1"
+  }
 }
