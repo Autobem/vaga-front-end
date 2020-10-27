@@ -1,0 +1,36 @@
+@import "../../../assets/styles/variables.scss";
+
+.card {
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: #121212;
+}
+.mat-card {
+    background: #d44040;
+    color: rgba(0, 0, 0, 0.87);
+}
+.mat-card {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.header-image {
+    background-size: cover;
+}
+.mat-card-image{
+    width: 60%;
+}
+.mat-card-header{
+    background-color: $white;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+
+.mat-card-title{
+    text-transform: uppercase;
+    color: $black;
+}
+
+.mat-card-subtitle{
+    color: $black;
+}
