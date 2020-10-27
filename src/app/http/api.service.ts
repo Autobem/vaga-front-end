@@ -14,7 +14,7 @@ export class ApiService {
     private http: HttpClient
   ) { }
 
-  ApiConn(set: number = null, limit: number = null): Observable<any> {
+  ApiConn(set: number = null, limit: number = null, pkId: string = null): Observable<any> {
     
     let url = this._url + "/?";
     
@@ -27,6 +27,10 @@ export class ApiService {
         url = url + "&";
       }
       url = url + `limit=${limit}`;
+    }
+
+    if (pkId != null) {
+      url = this._url + "/" + pkId;
     }
 
     return this.http.get(url);

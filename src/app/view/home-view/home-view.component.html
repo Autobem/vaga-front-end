@@ -1,6 +1,6 @@
 <br>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="col">
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
@@ -22,7 +22,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of dataSelected">
+                            <tr *ngFor="let item of dataSelected" (click)="modal.OpenModal(item)">
                                 <td class="col">{{ item?.id }}</td>
                                 <td class="col">{{ item?.name }}</td>
                                 <td class="col"><img src="{{ item?.img }}" alt="{{ item?.name }}"></td>

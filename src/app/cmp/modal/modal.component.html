@@ -1,0 +1,54 @@
+<div class="modalPK" *ngIf="modal.isOpen">
+    <div class="modal-content" *ngFor="let item of modal.pokemon">
+        <div class="container">
+            <div class="row">
+                <div class="card-deck mb-3 text-center">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">{{ item?.name.toUpperCase() }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <img src="{{ item?.sprites.front_default }}"
+                                        alt="Pokemon name {{ item?.name.toUpperCase() }}">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h4>Base de Experiência {{ item?.base_experience }}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Abilidades</h4>
+                                    <ul class="list-group">
+                                        <li class="list-group-item" *ngFor="let ab of item?.abilities">{{ ab.ability.name.toUpperCase() }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Formas</h4>
+                                    <ul class="list-group">
+                                        <li class="list-group-item" *ngFor="let fm of item?.forms">{{ fm.name.toUpperCase() }}</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <h4>Tipos</h4>
+                                        <ul class="list-group">
+                                            <li class="list-group-item" *ngFor="let tp of item?.types">{{ tp.type.name.toUpperCase() }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-danger"
+                                (click)="modal.CloseModal()">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

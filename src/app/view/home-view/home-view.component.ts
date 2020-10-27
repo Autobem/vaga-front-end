@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalComponent } from 'src/app/cmp/modal/modal.component';
 import { ApiService } from 'src/app/http/api.service';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-home-view',
@@ -15,12 +17,17 @@ export class HomeViewComponent implements OnInit {
 
   public dataSelected: Array<any> = null;
 
+  public id: number = null;
+  public name: string = null;
+  public img: string = null;
+
   constructor(
     private api: ApiService,
+    public modal: ModalService,
   ) { }
 
   ngOnInit(): void {
-    this.api.ApiConn(10,1).subscribe(
+    this.api.ApiConn().subscribe(
       res => {
         this.data = [];
         res.results.forEach(element => {
@@ -42,24 +49,23 @@ export class HomeViewComponent implements OnInit {
   }
 
   Paginate(num) {
-    console.log(num)
   }
 
   OrderById() {
     this.orderById ? this.orderById = false : this.orderById = true;
     if (this.orderById) {
-      this.dataSelected.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
+      this.dataSelected.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
     } else {
-      this.dataSelected.sort((a,b) => (a.id < b.id) ? 1 : ((b.id < a.id) ? -1 : 0));
+      this.dataSelected.sort((a, b) => (a.id < b.id) ? 1 : ((b.id < a.id) ? -1 : 0));
     }
   }
 
   OrderByName() {
     this.orderByName ? this.orderByName = false : this.orderByName = true;
     if (this.orderByName) {
-      this.dataSelected.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+      this.dataSelected.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
     } else {
-      this.dataSelected.sort((a,b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0));
+      this.dataSelected.sort((a, b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0));
     }
   }
 
