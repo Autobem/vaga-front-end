@@ -1,26 +1,36 @@
+<br>
 <div class="row">
     <div class="col-md-6">
-        <form class="d-flex">
-            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div>
-    <div class="col-md-6">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <td class="col cursor" (click)="OrderById()"># <i class="fas fa-retweet"></i></td>
-                    <td class="col cursor" (click)="OrderByName()">Name <i class="fas fa-retweet"></i></td>
-                    <td class="col">Picture</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of dataSelected">
-                    <td class="col">{{ item?.id }}</td>
-                    <td class="col">{{ item?.name }}</td>
-                    <td class="col"><img src="{{ item?.img }}" alt=""></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="col">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Lista de Pokemons</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>
+                            <input type="text" class="form-control mr-2" type="search" placeholder="Buscar Pokemon" aria-label="Search" #pk
+                            (input)="SearchPokemon(pk.value)">
+                        </li>
+                    </ul>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td class="col cursor" (click)="OrderById()"># <i class="fas fa-retweet"></i></td>
+                                <td class="col cursor" (click)="OrderByName()">Name <i class="fas fa-retweet"></i></td>
+                                <td class="col">Picture</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of dataSelected">
+                                <td class="col">{{ item?.id }}</td>
+                                <td class="col">{{ item?.name }}</td>
+                                <td class="col"><img src="{{ item?.img }}" alt="{{ item?.name }}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/http/api.service';
 
 @Component({
@@ -8,56 +8,71 @@ import { ApiService } from 'src/app/http/api.service';
 })
 export class HomeViewComponent implements OnInit {
 
-  private id: number = 1;
-  private data = null;
+  private data: Array<any> = null;
   private orderById: boolean = true;
   private orderByName: boolean = true;
+  private paginate: Array<any> = null;
 
-  public dataSelected = null;
+  public dataSelected: Array<any> = null;
 
   constructor(
     private api: ApiService,
   ) { }
 
   ngOnInit(): void {
-    this.api.ApiConn().subscribe(
+    this.api.ApiConn(10,1).subscribe(
       res => {
         this.data = [];
         res.results.forEach(element => {
+          let _id = element.url.replace(/https\:\/\/pokeapi\.co\/api\/v2\/pokemon\//gi, "").replace(/\//gi, "");
           this.data.push({
-            id: this.id,
+            id: _id,
             name: element.name,
-            img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.id}.png`,
+            img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${_id}.png`,
           });
-          this.id++;
         });
 
         this.dataSelected = this.data;
+        this.Paginate(this.data.length);
       },
       err => {
-        this.data = JSON.stringify("Erro na busca: " + err);
+        this.data = null;
       }
     );
   }
 
-  OrderById() {
-    let _data = null;
-    _data = this.data;
+  Paginate(num) {
+    console.log(num)
+  }
 
-    this.dataSelected = null;
-    this.dataSelected = _data.reverse();
+  OrderById() {
+    this.orderById ? this.orderById = false : this.orderById = true;
+    if (this.orderById) {
+      this.dataSelected.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
+    } else {
+      this.dataSelected.sort((a,b) => (a.id < b.id) ? 1 : ((b.id < a.id) ? -1 : 0));
+    }
   }
 
   OrderByName() {
+    this.orderByName ? this.orderByName = false : this.orderByName = true;
     if (this.orderByName) {
       this.dataSelected.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
     } else {
       this.dataSelected.sort((a,b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0));
     }
+  }
 
-    this.orderByName ? this.orderByName = false : this.orderByName = true;
+  SearchPokemon(pk: string) {
+    this.dataSelected = [];
 
-    console.log(this.dataSelected);
+    this.data.forEach(element => {
+      if (element.name.includes(pk)) {
+        this.dataSelected.push(element);
+      } else if (element.id == pk) {
+        this.dataSelected.push(element);
+      }
+    });
   }
 
 }

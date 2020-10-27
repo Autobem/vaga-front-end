@@ -14,29 +14,22 @@ export class ApiService {
     private http: HttpClient
   ) { }
 
-  ApiConn(pk: string = null): Observable<any> {
+  ApiConn(set: number = null, limit: number = null): Observable<any> {
     
-    let url = this._url;
+    let url = this._url + "/?";
     
-    if (pk == null) {
-      url = url + "/?offset=5&limit=5";
-    } else {
-      url = url + `/${pk}`; 
+    if (set != null) {
+      url = url + `offset=${set}`;
+    }
+
+    if (limit != null) {
+      if (url.includes("offset=")) {
+        url = url + "&";
+      }
+      url = url + `limit=${limit}`;
     }
 
     return this.http.get(url);
   }
-
-  GetPK(pk: any = null) {
-    let pkm = this.ApiConn(pk).subscribe(
-      res => {
-        return res;
-      },
-      err => {
-        return pkm;
-      }
-    );
-  }
-
 
 }
