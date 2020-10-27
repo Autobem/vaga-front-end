@@ -49,40 +49,15 @@ export class HomeViewComponent implements OnInit {
   }
 
   OrderByName() {
-    let _name = this.dataSelected;
-    this.dataSelected = [];
+    if (this.orderByName) {
+      this.dataSelected.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+    } else {
+      this.dataSelected.sort((a,b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0));
+    }
 
-    _name.sort(function (a, b) {
-      console.log(a.name, b.name);
-      console.log(a.name < b.name);
-      if (a.name < b.name) {
-        this.dataSelected.push(
-          {
-            id: a.id,
-            name: a.name,
-            img: a.img
-          },
-          {
-            id: b.id,
-            name: b.name,
-            img: b.img
-          },
-        );
-      } else {
-        this.dataSelected.push(
-          {
-            id: b.id,
-            name: b.name,
-            img: b.img
-          },
-          {
-            id: a.id,
-            name: a.name,
-            img: a.img
-          }
-        );
-      }
-    });
+    this.orderByName ? this.orderByName = false : this.orderByName = true;
+
+    console.log(this.dataSelected);
   }
 
 }
