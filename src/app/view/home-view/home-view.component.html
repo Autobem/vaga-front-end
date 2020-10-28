@@ -1,18 +1,31 @@
 <br>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" class="form-control mr-2" type="search" placeholder="Buscar Pokemon" aria-label="Search" #pk
+                (input)="SearchPokemon(pk.value)">
+            </div>
+            <div class="col-md-6">
+                <select id="qtd" class="form-control" (change)="PageQtt()">
+                    <option value="5">Mostrar 5 por página</option>
+                    <option value="15">Mostrar 15 por página</option>
+                    <option value="25">Mostrar 25 por página</option>
+                    <option value="50">Mostrar 50 por página</option>
+                    <option value="100">Mostrar 100 por página</option>
+                    <option value="250">Mostrar 250 por página</option>
+                    <option value="1050">Mostrar Todos os Pokemons</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
         <div class="col">
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
                     <h4 class="my-0 font-weight-normal">Lista de Pokemons</h4>
                 </div>
                 <div class="card-body">
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li>
-                            <input type="text" class="form-control mr-2" type="search" placeholder="Buscar Pokemon" aria-label="Search" #pk
-                            (input)="SearchPokemon(pk.value)">
-                        </li>
-                    </ul>
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -29,6 +42,14 @@
                             </tr>
                         </tbody>
                     </table>
+                    <br>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item" (click)="GoToPage(-1)"><a class="page-link" href="#">Previous</a></li>
+                          <li class="page-item" *ngFor="let num of arrayPages" (click)="GoToPage(num)"><a class="page-link" href="#">{{ num }}</a></li>
+                          <li class="page-item" (click)="GoToPage(1)"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                      </nav>
                 </div>
             </div>
         </div>

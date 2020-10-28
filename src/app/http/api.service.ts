@@ -18,16 +18,17 @@ export class ApiService {
     
     let url = this._url + "/?";
     
+    if (limit != null) {
+      url = url + `limit=${limit}`;
+    }
+    
     if (set != null) {
+      if (url.includes("limit=")) {
+        url = url + "&";
+      }
       url = url + `offset=${set}`;
     }
 
-    if (limit != null) {
-      if (url.includes("offset=")) {
-        url = url + "&";
-      }
-      url = url + `limit=${limit}`;
-    }
 
     if (pkId != null) {
       url = this._url + "/" + pkId;
