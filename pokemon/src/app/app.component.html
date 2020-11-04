@@ -1,0 +1,33 @@
+<div class="container cabecalho">
+  <div>
+    <img class="logo" src="../assets/img/logo-pokemon.png" alt="Logo Pokémon" />
+  </div>
+  <input class="input-cabecalho" type="text" placeholder="Digite o Nome"
+  (change)="obterPokemonByName(pokemonName)" [(ngModel)]="pokemonName" />
+</div>
+
+<div class="container container-table">
+<table class="table table-striped">
+  <thead>
+    <tr >
+      <th scope="col">Nome</th>
+      <th scope="col">Imagem</th>
+    </tr>
+  </thead>
+  <tbody >
+      <tr *ngFor="let pokemon of listPokemon" >
+        <td>{{ pokemon.name }}</td>
+        <img class="img-pokemon" src="{{pokemon.sprites.front_default}}" alt="">
+      </tr>  
+      <tr *ngFor="let pokemon of listaConvertida " (click)="obterDetalhesPokemos(pokemon.name)" >
+        <td>{{ pokemon.name }}</td>
+        <img class="img-pokemon" src="{{pokemon.image}}" alt="">
+      </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="container btn-prox-next">
+  <button (click)="obterListPokemonsByPage(previous)">ANTERIOR</button>
+  <button (click)="obterListPokemonsByPage(next)">PRÓXIMO</button>
+</div>
