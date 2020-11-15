@@ -1,0 +1,26 @@
+<div>
+	<app-form-search></app-form-search>
+</div>
+
+
+<div class="row row-cols-1 row-cols-md-6">	
+	<a class="col-sm mb-4" data-toggle="modal" data-target="#exampleModal"
+	(click)="openModalWithComponent()" [routerLink]="['./', p.id]"
+	*ngFor="let p of pokemons.results | paginate:{ itemsPerPage: 24, currentPage: p }">
+	<div class="card">
+		<img src="{{ p.details.sprites.front_default }}" class="card-img-top" >
+		
+		  <p class="card-title m-auto">#{{ p.id }} {{ p.name }}</p>
+		
+	</div>
+	</a>
+</div>
+
+
+<div class="pagination">
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+
+
+<router-outlet></router-outlet>
