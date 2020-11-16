@@ -1,4 +1,8 @@
 main{
-    padding: 74px 16px 42px 16px;
-    background-color: rgba(253, 249, 249, 0.993);
+    background-color: rgb(240,240,240);
+}
+
+.search-row{
+    margin: 60px 300px 0 300px;
+    
 }

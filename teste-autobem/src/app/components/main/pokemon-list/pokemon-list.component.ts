@@ -1,4 +1,7 @@
-import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Location } from '@angular/common';
+import { style, trigger, transition, animate, query, stagger } from '@angular/animations';
+
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -6,12 +9,72 @@ import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.comp
 import { PokemonListService } from './pokemon-list.service';
 
 import { PokeAPI, PokemonDetails, Results } from './../../../interface/pokemon';
+import { Router } from '@angular/router';
+import { ModalService } from 'src/app/services/modal.service';
 
 
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
-  styleUrls: ['./pokemon-list.component.css']
+  styleUrls: ['./pokemon-list.component.css'],
+  animations: [
+    trigger('itemAnim', [ //selector used by template
+      //ENTRY ANIMATION
+      transition('void => *', [ //ANIMATION SURGERY - NON EXISTING => ANY STATE 
+        //INITIAL STATE
+        style({
+          height: 0,
+          opacity: 0,
+          transform: 'scale(0)',
+          'margin-bottom': 0,
+
+          //INITIAL STATE BEFORE EXPAND PADDING PROPERTIES
+          paddingTop: 0,
+          paddingBottom: 0,
+          paddingLeft: 0,
+          paddingRight: 0,
+        }),
+        // FIRST ANIMATE THE SPACING (INCLUDES HEIGHT AND MARGIN)
+        animate('100ms', style({
+          height: '*', //means the height of the DOM element
+          'margin-bottom': '*',
+          paddingTop: '*',
+          paddingBottom: '*',
+          paddingLeft: '*',
+          paddingRight: '*',
+        })),
+        //ANIMATE THE FINAL STATE
+        animate(150)
+      ]),
+
+      // CLOSING ANIMATION
+      transition('* => void', [ // animation disappearing, any state => void
+        // first scale up
+        animate(50, style({
+          transform: 'scale(1.05)'
+        })),
+        // then back to normal size & beginning to fade out
+        animate(50, style({
+          transform: 'scale(1)',
+          opacity: 0.75,
+        })),
+        // scale down & fade out completely
+        animate('120ms',style({
+          transform: 'scale(0.68)',
+          opacity: 0,
+        })),
+        //THEN ANIMATE THE SPACING (HEIGHT, MARGIN, PADDING) - TOTAL DISAPPEARING 
+        animate('150ms', style({
+          height: 0,
+          'margin-bottom': 0,
+          paddingTop: 0,
+          paddingBottom: 0,
+          paddingLeft: 0,
+          paddingRight: 0,
+        }))
+      ])
+    ])
+  ]
 })
 export class PokemonListComponent implements OnInit{
   @Output() exportPokemons = new EventEmitter();
@@ -19,29 +82,40 @@ export class PokemonListComponent implements OnInit{
 
 
   pokemons: PokeAPI;
-
   bsModalRef: BsModalRef;
-  
- p: number = 1;
- term: string = '';
+  p: number = 1;
+  query: string;
+  typeFilters: string;
 
-  constructor(private pokemonListService: PokemonListService, 
-    private pokemonService: PokemonService, private modalService: BsModalService) { 
+
+  @Input() set search(newSearch: string) {
+    if (newSearch !== this.query) {
+      this.query = newSearch;
+      this.p = 1
+    }
+  }
+  @Input() set typeFilter(type: string) {
+    if (type !== this.typeFilter) {
+      this.typeFilters = type;
+    }
+  }
+
+
+
+  constructor(
+    private pokemonListService: PokemonListService, 
+    private pokemonService: PokemonService, 
+    private modalService: BsModalService,
+    private modal: ModalService) { 
     this.pokemonListService.setBrowserTitle();
    
   }
 
   ngOnInit(){
-    // this.getPokemon()
-    // console.log(this.pokemon$)
-    // console.log('1234')
     this.getPokemons();
     this.pokemonsLoaded = false
   }
 
-  search(term){
-    this.pokemonListService.searchService(term);
-  }
 
   getPokemons(): void {
     this.pokemonService.getPokemon().subscribe((data: PokeAPI) => {
@@ -69,10 +143,10 @@ export class PokemonListComponent implements OnInit{
         pokemon.details = details;
         // when last pokemon details have been loaded
         // send pokemons to header component
-        // if (pokemon.id === '151') {
-        //   this.pokemonsLoaded = true;
-        //   this.exportPokemons.emit(this.pokemons.results);
-        // }
+        if (pokemon.id === '151') {
+          this.pokemonsLoaded = true;
+          this.exportPokemons.emit(this.pokemons.results);
+        }
       });
   }
 
@@ -95,7 +169,7 @@ export class PokemonListComponent implements OnInit{
     this.bsModalRef = this.modalService.show(PokemonDetailsComponent);
     this.bsModalRef.content.closeBtnName = 'Close'; 
   }
-  
+
 
 
 }

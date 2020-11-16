@@ -1,0 +1,108 @@
+.type {
+    padding: 5px 5px 2px 10px;
+    margin: 2px 5px 2px 2px;
+    border-radius: 10px;
+    color: blanchedalmond;
+    font-weight: bold;
+  }
+
+  .type-style{
+      margin: auto 2px auto 2px;
+  }
+  
+  .skill {
+    margin: 2px 2px 2px 2px;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+
+  .modal-header{
+    background-color: rgba(238,21,21);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+  }
+  h3{
+    color: rgb(240,240,240); 
+    font-weight: bold;
+  }
+  
+  .p-id{
+    color: rgb(240,240,240); 
+    font-weight: bold;
+  }
+
+  
+  .fire {
+    background-color: #F45545;
+  }
+  
+  .water {
+    background-color: #558BCF;
+    color: rgba(0, 0, 0, 0.671);
+  }
+  
+  .grass {
+    background-color: #589F43;
+  }
+  
+  .poison {
+    background-color: #6c4294;
+  }
+  
+  .flying {
+    background-color: #E3C066;
+    color: rgba(0, 0, 0, 0.671);
+  }
+  
+  .normal {
+    background-color: #bd8d41;
+  }
+  
+  .bug {
+    background-color: #acbe16;
+    color: rgba(0, 0, 0, 0.671);
+  }
+  
+  .electric {
+    background-color: #F3BE1F;
+    color: rgba(0, 0, 0, 0.671);
+
+  }
+  
+  .ground {
+    background-color: #796444;
+  }
+  
+  .dragon {
+    background-color: #A485C2;
+    color: rgba(0, 0, 0, 0.781);
+  }
+  
+  .psychic {
+    background-color: #EE86A5;
+    color: rgba(0, 0, 0, 0.671);
+  }
+  
+  .fairy {
+    background-color: #BF6481;
+  }
+  
+  .ice {
+    background-color: #64AFF5;
+  }
+  
+  .rock {
+    background-color: #3B3426;
+  }
+  
+  .fighting {
+    background-color: #915656;
+  }
+  
+  .steel {
+    background-color: #949494;
+    color: rgba(0, 0, 0, 0.671);
+  }
+  
+  .ghost {
+    background-color: #75577D;
+  }

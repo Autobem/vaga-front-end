@@ -1,35 +1,50 @@
-<!-- Modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
-  
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="pokemon | async; let pokemon">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+  <div class="modal-content" *ngIf="modal.isOpen">
+  <div *ngFor="let p of modal.pokemon">
+    
+    <div class="modal-header" >
+      <p class="p-id" > 
+        #{{ p.id }}</p>      
+      <h3 class="modal-title mx-auto pl-5">
+        {{ p.name | uppercase }} </h3>
+        <button type="button" class="close pull-left" aria-label="Close" (click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body" style="background-color: rgba(240,240,240);">
+        <div class="md-n5">
+          <img 
+          class="d-block mx-auto mt-n3" style="width: 40%;"
+          src={{p.details.sprites.front_default}}>
         </div>
-        <div class="modal-body">
-          ...
+
+      <div class="info text-center">
+        <div class="m-1">
+          
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="row justify-content-md-center m-1">
+            <p class="type-style">Type:&nbsp; </p>
+          <div  *ngFor="let type of p.details.types" 
+          class="type d-inline-block" 
+          [ngClass]="type.type.name">
+              {{ type.type.name | titlecase }}&nbsp;
+          </div>        
+      </div>
+      
+        <div class="row justify-content-md-center m-1">
+            <p class="type-style">Skills:&nbsp; </p>
+          <div  *ngFor="let skill of p.details.abilities" 
+          class="skill d-inline-block">
+              {{ skill.ability.name | titlecase }}&nbsp;
+          </div> 
         </div>
+        <div class="row justify-content-md-center m-1">
+          <p class="type-style">{{ p.description }}  </p>
+      </div>
       </div>
     </div>
-  </div> -->
+    </div>
+  </div>
+  
+    
 
-    <div class="modal-header">
-        <img src={{pokemonImg}}>
-      <h4 class="modal-title pull-left"> {{pokemon}} </h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      {{ pokemon }} fasda
-    </div>

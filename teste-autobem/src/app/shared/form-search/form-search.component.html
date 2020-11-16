@@ -1,7 +1,31 @@
-<form [formGroup]="searchForm" style="margin-bottom:15px">
+<div class="container-fluid mb-3">
+  <div class=" form-row ">
+    
+    
+        <div class="input-group col-md-8 mb-3 mr-3">
+          <input class="form-control" 
+          type="text" 
+          placeholder="Search Pokémon"
+          [(ngModel)]="search"
+          (ngModelChange)="searchEvent($event)" />
+        </div>
+    
 
-  <div class="input-group input-group-sm mb-3">
-  <input class="form-control" type="text" placeholder="Buscar Pokémon" formControlName="search" />
-  </div> 
+    <div class="row ml-2" >
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Filter by type</label>
+        </div>
+        <select class="form-control"  [(ngModel)]="currentType" 
+        (ngModelChange)="onTypeSelected()">
+    
+            <option [ngValue]="null">None</option>
+              
+            <option *ngFor="let type of types" [value]="type">
+              {{ type | titlecase }}
+            </option>
+        </select>
+    </div>
 
-</form>
+  </div>
+</div>

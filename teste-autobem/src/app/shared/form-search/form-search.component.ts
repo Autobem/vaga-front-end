@@ -1,30 +1,72 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+
+import { Results } from 'src/app/interface/pokemon';
 
 @Component({
   selector: 'app-form-search',
   templateUrl: './form-search.component.html',
   styleUrls: ['./form-search.component.css']
 })
-export class FormSearchComponent implements OnDestroy {
+export class FormSearchComponent implements OnInit{
 
-  @Output() formChange = new EventEmitter<string>();
-  searchForm: FormGroup;
-  subscriptions: Subscription[]
 
-  constructor(private formBuilder: FormBuilder) { 
-    this.searchForm = this.formBuilder.group({
-      search: ['']
-    });
+  @Output() searchChange = new EventEmitter();
+  @Output() typeSelected = new EventEmitter();
 
-    this.subscriptions = [
-      this.searchForm.controls.search.valueChanges.subscribe(value => this.formChange.emit(value)) // emit signal (string) for each value typed
-    ];
+
+  search: string;
+  types: Array<string>;
+  pokemonList: Array<Results>;
+  currentType: string;
+  currentAbilities: Array<string>;
+
+
+  @Input() set pokemons(pokemons: Results[]) {
+    if (pokemons !== this.pokemonList) {
+      this.pokemonList = pokemons;
+      
+      this.pokemonList.forEach(pokemon => {
+        // this.setPokemonAbilities(pokemon);
+        this.setPokemonTypes(pokemon);
+      });
+    }
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(s => s.unsubscribe());
+
+  constructor() { }
+
+  ngOnInit(): void {
+    this.types = []
   }
+
+  searchEvent(search): void {
+    // check for cleared search
+    if (search === '') {
+      this.search = search;
+    }
+    this.searchChange.emit(this.search);
+  }
+
+  onTypeSelected(): void {
+    if (this.currentType) {
+      this.typeSelected.emit(this.currentType);
+    } else {
+      this.typeSelected.emit('');
+    }
+  }
+
+  setPokemonTypes(pokemon: Results): void {
+    if (pokemon) {
+      pokemon.details.types.forEach(type => {
+        const typeName = type.type.name;
+        if (!this.types.includes(typeName)) {
+          this.types.push(typeName);
+          this.types.sort();
+        }
+      });
+    }
+  }
+
+
 
 }

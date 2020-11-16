@@ -1,17 +1,17 @@
-<div>
-	<app-form-search></app-form-search>
-</div>
 
-
-<div class="row row-cols-1 row-cols-md-6">	
-	<a class="col-sm mb-4" data-toggle="modal" data-target="#exampleModal"
-	(click)="openModalWithComponent()" [routerLink]="['./', p.id]"
-	*ngFor="let p of pokemons.results | paginate:{ itemsPerPage: 24, currentPage: p }">
+<div class="row row-cols-md-6"  
+	*ngIf="pokemonsLoaded && pokemons" >	
+	<a class="col-sm mb-4 text-decoration-none" 
+	style="min-width: 195.5; min-height: fit-content;" 
+	(click)="modal.getPokemonDetails(p)" 
+	*ngFor="let p of pokemons.results | search: query | typeFilter: typeFilters 
+	| paginate:{ itemsPerPage: 18, currentPage: p }" >
 	<div class="card">
-		<img src="{{ p.details.sprites.front_default }}" class="card-img-top" >
+		<p class="id position-absolute  ml-2 mt-1">#{{ p.id }}</p>
+		<img src="{{ p.details.sprites.front_default }}" 
+		class="card-img-top " >
 		
-		  <p class="card-title m-auto">#{{ p.id }} {{ p.name }}</p>
-		
+		<p class="card-title m-auto"> {{ p.name | titlecase }}</p>
 	</div>
 	</a>
 </div>

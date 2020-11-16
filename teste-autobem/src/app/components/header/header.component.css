@@ -1,5 +1,11 @@
-header{
-    background-color: rgb(252, 65, 65);
+@font-face{
+    font-family: poke-font;
+    src: url(/../../../assets/fonts/Pokemon\ Solid.ttf);
+}
+
+
+.navbar{
+    background-color: rgb(238,21,21);
     color: rgb(230, 230, 230);
     padding: 4px 4px 0px 4px;
     position: fixed;
@@ -11,16 +17,7 @@ header{
     height: 50px;
 }
 
-i-bs{
+h1{
+    font-family: poke-font;
     color: white;
-    float: left;
-    padding: 6px 0 0 5px;
-    min-width: 54px;
-    transition: ease-out 0.15s
-}
-
-i-bs:hover{
- cursor: pointer;
- background-color:  rgb(226, 61, 61);
- padding: 6px 0 0 7px;
 }
