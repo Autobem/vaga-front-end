@@ -91,12 +91,13 @@ export class PokemonListComponent implements OnInit{
   @Input() set search(newSearch: string) {
     if (newSearch !== this.query) {
       this.query = newSearch;
-      this.p = 1
+      this.p = 1;
     }
   }
   @Input() set typeFilter(type: string) {
     if (type !== this.typeFilter) {
       this.typeFilters = type;
+      this.p = 1;
     }
   }
 
