@@ -13,11 +13,11 @@ export class TypeFilterPipe implements PipeTransform {
     }
     filters = filters.toLowerCase();
 
-    return value.filter(item => {
+    return value.filter(pokemon => {
       let matchFound = false;
 
-      if (item.details && item.details.types) {
-        matchFound = JSON.stringify(item.details.types)
+      if (pokemon.details && pokemon.details.types) {
+        matchFound = JSON.stringify(pokemon.details.types)
           .toLowerCase()
           .includes(filters);
       }

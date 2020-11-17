@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -12,26 +11,25 @@ import { SearchPipe } from './pipes/search.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 import { TypeFilterPipe } from './pipes/typeFilter.pipe';
-import { FormSearchComponent } from './shared/form-search/form-search.component';
-import { PokemonDetailsComponent } from './components/main/pokemon-details/pokemon-details.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { PokemonModalComponent } from './components/main/pokemon-modal/pokemon-modal.component';
 
 
 const components = [
   AppComponent,
   HeaderComponent,
   PokemonListComponent,
-  PokemonDetailsComponent,
+  PokemonModalComponent,
   SearchPipe,
   TypeFilterPipe,
-  FormSearchComponent
+  SearchBarComponent
 ]
 const modules = [
   BrowserModule,
   HttpClientModule,
   FormsModule,
   NgxPaginationModule,
-  ModalModule.forRoot(),
-  BrowserAnimationsModule,
+  ModalModule.forRoot()
 ]
 @NgModule({
   declarations: [

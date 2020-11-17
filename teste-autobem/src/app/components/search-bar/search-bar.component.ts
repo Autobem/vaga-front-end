@@ -3,11 +3,11 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { Results } from 'src/app/interface/pokemon';
 
 @Component({
-  selector: 'app-form-search',
-  templateUrl: './form-search.component.html',
-  styleUrls: ['./form-search.component.css']
+  selector: 'app-search-bar',
+  templateUrl: './search-bar.component.html',
+  styleUrls: ['./search-bar.component.css']
 })
-export class FormSearchComponent implements OnInit{
+export class SearchBarComponent implements OnInit{
 
 
   @Output() searchChange = new EventEmitter();

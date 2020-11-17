@@ -13,17 +13,17 @@ export class SearchPipe implements PipeTransform {
       }
       searchText = searchText.toLowerCase();
   
-      return value.filter(item => {
+      return value.filter(pokemon => {
         let matchFound = false;
   
-        if (item.name && item.url) {
-          const name = item.name;
-          const index = item.url.split('/')[item.url.split('/').length - 2];
+        if (pokemon.name) {
+          const name = pokemon.name;
+          // const index = pokemon.url.split('/')[pokemon.url.split('/').length - 2];
   
           const searchName = JSON.stringify(name).toLowerCase().includes(searchText);
-          const searchId = JSON.stringify(index).toLowerCase().includes(searchText);
+          // const searchId = JSON.stringify(index).toLowerCase().includes(searchText);
   
-          if (searchName || searchId) {
+          if (searchName) {
             matchFound = true;
           }
         }

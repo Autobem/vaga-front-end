@@ -3,6 +3,13 @@
     src: url(/../../../assets/fonts/Pokemon\ Solid.ttf);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* h1{
+    font-family: 'Press Start 2P', cursive;
+    color:rgb(230, 230, 230);
+} */
+
 
 .navbar{
     background-color: rgb(238,21,21);

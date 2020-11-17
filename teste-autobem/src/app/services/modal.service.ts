@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { PokemonDetailsComponent } from '../components/main/pokemon-details/pokemon-details.component';
+import { PokemonModalComponent } from '../components/main/pokemon-modal/pokemon-modal.component';
 import { PokemonDetails, Results } from '../interface/pokemon';
 import { PokemonService } from './pokemon.service';
 
@@ -20,7 +20,7 @@ export class ModalService {
     
   }
 
-  getPokemonDetails(pokemon: Results): void {
+  openModal(pokemon: Results): void {
     this.pokemon = [];
     this.isOpen = true;
     this.pokemonService
@@ -29,7 +29,7 @@ export class ModalService {
         pokemon.details = details;
        this.pokemon.push(pokemon)
        console.log(this.pokemon)
-       this.bsModalRef = this.ModalService.show(PokemonDetailsComponent)
+       this.bsModalRef = this.ModalService.show(PokemonModalComponent)
        this.bsModalRef.content.closeBtnName = 'Close';
       });
   }
