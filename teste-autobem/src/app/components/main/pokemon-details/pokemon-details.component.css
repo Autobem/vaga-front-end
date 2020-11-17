@@ -16,6 +16,10 @@
     font-weight: bold;
   }
 
+  .modal-body{
+    background-color: rgba(240,240,240);
+  }
+
   .modal-header{
     background-color: rgba(238,21,21);
     box-shadow: 0 2px 5px rgba(0,0,0,0.26);

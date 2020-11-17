@@ -1,15 +1,9 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Location } from '@angular/common';
+import {  Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { style, trigger, transition, animate, query, stagger } from '@angular/animations';
-
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Observable } from 'rxjs';
-import { PokemonService } from 'src/app/services/pokemon.service';
-import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.component';
-import { PokemonListService } from './pokemon-list.service';
 
+import { PokemonService } from 'src/app/services/pokemon.service';
 import { PokeAPI, PokemonDetails, Results } from './../../../interface/pokemon';
-import { Router } from '@angular/router';
 import { ModalService } from 'src/app/services/modal.service';
 
 
@@ -78,15 +72,13 @@ import { ModalService } from 'src/app/services/modal.service';
 })
 export class PokemonListComponent implements OnInit{
   @Output() exportPokemons = new EventEmitter();
+  
   pokemonsLoaded: boolean;
-
-
   pokemons: PokeAPI;
   bsModalRef: BsModalRef;
   p: number = 1;
   query: string;
   typeFilters: string;
-
 
   @Input() set search(newSearch: string) {
     if (newSearch !== this.query) {
@@ -104,11 +96,10 @@ export class PokemonListComponent implements OnInit{
 
 
   constructor(
-    private pokemonListService: PokemonListService, 
     private pokemonService: PokemonService, 
     private modalService: BsModalService,
     private modal: ModalService) { 
-    this.pokemonListService.setBrowserTitle();
+    
    
   }
 
@@ -129,7 +120,6 @@ export class PokemonListComponent implements OnInit{
           pokemon.id = pokemon.url.split('/')[
             pokemon.url.split('/').length - 2
           ];
-
           this.getPokemonDetails(pokemon);
           this.getPokemonSpeciesDetails(pokemon);
         });
@@ -165,12 +155,4 @@ export class PokemonListComponent implements OnInit{
         }
       });
   }
-
-  openModalWithComponent() {
-    this.bsModalRef = this.modalService.show(PokemonDetailsComponent);
-    this.bsModalRef.content.closeBtnName = 'Close'; 
-  }
-
-
-
 }

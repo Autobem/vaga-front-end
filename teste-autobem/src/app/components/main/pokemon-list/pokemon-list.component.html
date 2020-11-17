@@ -10,7 +10,6 @@
 		<p class="id position-absolute  ml-2 mt-1">#{{ p.id }}</p>
 		<img src="{{ p.details.sprites.front_default }}" 
 		class="card-img-top " >
-		
 		<p class="card-title m-auto"> {{ p.name | titlecase }}</p>
 	</div>
 	</a>
@@ -21,6 +20,3 @@
 <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 
-
-
-<router-outlet></router-outlet>
