@@ -1,0 +1,56 @@
+.poke-list{
+    
+    display: flex;
+    flex: 1;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+
+.poke-item {
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.poke-item .poke-item-image {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.poke-item .poke-item-text {
+    word-wrap: break-word; 
+    white-space: normal; 
+    width: 200px; 
+    overflow: hidden; 
+    max-height: 50px;
+    text-align: center;
+}
+
+.poke-item .poke-item-text p {
+    font-weight: bold;
+}
+
+.empty-message{
+    flex: 1;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.empty-message p{
+    color: red;
+    font-size: 1.8rem;
+    font-weight: bold;
+    
+}

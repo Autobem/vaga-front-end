@@ -1,0 +1,16 @@
+<div class="empty-message">
+    <p>{{ list.length === 0 ? 'Nenhum pokemon encontrado' : '' }}</p>
+</div>
+<div class="poke-list">
+    <ng-container *ngFor="let pokeItem of list" style="margin: 0.5%;">
+        <div class="poke-item">
+            <div class="poke-item-image">
+                <img
+                    src="{{ 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/'+pokeItem.url.split('/')[pokeItem.url.split('/').length - 2]+'.gif' }}" />
+            </div>
+            <div class="poke-item-text">
+            <p>{{ pokeItem.name }}</p>
+            </div>
+        </div>
+    </ng-container>
+</div>

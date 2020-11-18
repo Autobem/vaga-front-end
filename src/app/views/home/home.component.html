@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-md" style="background-color:'#ff2828'">
+    <a href='/'><img src="/assets/images/logo.png" height=50 /></a>
+    <div class="navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" ngbDropdown>
+                <app-colapse-button [title]="search.type.title" [search]="onChangeTypeSearch"
+                    [options]="[{endpoint: 'pokemon', title: 'nome'}, {endpoint: 'type', title: 'tipo'}]">
+                </app-colapse-button>
+            </li>
+            <li class="nav-item" ngbDropdown>
+                <app-input-basic [search]="onChangeTextSearch"></app-input-basic>
+            </li>
+            <li>
+                <a (click)="onSearch()" class="nav-link" tabindex="0" role="button" style="color:white">
+                    Buscar
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<app-poke-list [list]="pokeList"></app-poke-list>
+<app-pagination [totalPages]="search.total_pages" [PageChange]="onPageChange" [page]="search.page"></app-pagination>
