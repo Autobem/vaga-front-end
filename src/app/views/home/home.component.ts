@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
   onPageChange = value => {
     this.search.page = value;
     this.onLoad();
+    window.scrollTo( 0, 0 );
   }
 
   onChangeTotal = value => {

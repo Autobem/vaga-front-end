@@ -22,6 +22,12 @@
     justify-content: center;
 }
 
+@media only screen and (max-width: 600px) {
+    .poke-item {
+        width: 300px;
+    }
+  }
+
 .poke-item .poke-item-image {
     height: 100px;
     display: flex;

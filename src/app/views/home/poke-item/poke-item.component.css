@@ -1,12 +1,13 @@
 .item-page-container {
     margin-top:80px;
     min-height: 100%;
-    width: 350px;
+    width: 300px;
     margin-right: auto;
     margin-left: auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 .item-page-container .content-image {
