@@ -12,6 +12,7 @@ import { InputBasicComponent } from './components/input-basic/input-basic.compon
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonListComponent } from './views/home/poke-list/poke-list.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { PokeItemComponent } from './views/home/poke-item/poke-item.component';
 
 
 
@@ -23,6 +24,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     InputBasicComponent,
     PokemonListComponent,
     PaginationComponent,
+    PokeItemComponent,
   ],
   imports: [
     BrowserModule,
