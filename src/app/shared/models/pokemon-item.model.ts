@@ -1,4 +1,4 @@
-export class pokemonItem {
+export class PokemonItem {
     id: number;
     name: string;
     weight: number;

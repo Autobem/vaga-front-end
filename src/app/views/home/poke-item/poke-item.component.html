@@ -1,1 +1,14 @@
-<p>poke-item works!</p>
+<div class="item-page-container">
+    <div class="content-image">
+        <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/{{ pokemon?.id }}.gif" />
+    </div>
+    <div class="content-info">
+        <p>{{ pokemon?.name }}</p>
+        <span>Peso: {{ pokemon?.weight }} oz</span>
+        
+    </div>
+    <p>experiência: <ngb-progressbar type="success" height=".5rem" [value]="parseInt(pokemon?.base_experience/10)"></ngb-progressbar></p>
+    <p>hp: <ngb-progressbar type="warning" height=".5rem" [value]="parseInt(pokemon?.stats[0]?.base_stat/10)"></ngb-progressbar></p>
+
+</div>

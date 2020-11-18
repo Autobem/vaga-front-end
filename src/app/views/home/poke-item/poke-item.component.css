@@ -1,0 +1,27 @@
+.item-page-container {
+    margin-top:80px;
+    min-height: 100%;
+    width: 350px;
+    margin-right: auto;
+    margin-left: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-page-container .content-image {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.item-page-container .content-info {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+}
+
+.item-page-container .content-info p {
+    font-weight: bold;
+}

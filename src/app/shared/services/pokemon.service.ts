@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Search } from '../models/search.model';
 import { ResponsePageable } from '../models/responsePageable.model';
+import { PokemonItem } from '../models/pokemon-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class PokemonService {
 
   public getPokemonSearchType(search: Search) : Observable<ResponsePageable>{
     return this.httpClient.get<ResponsePageable>(this.apiUrl + 'type/'+search?.text+'?limit=30&offset=' + (search?.page - 1)*30);
+  }
+
+  public getPokemon(value) : Observable<PokemonItem>{
+    return this.httpClient.get<PokemonItem>(this.apiUrl + 'pokemon/'+value);
   }
 }

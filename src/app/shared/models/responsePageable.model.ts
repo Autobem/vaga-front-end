@@ -5,4 +5,6 @@ export class ResponsePageable{
     previous: boolean;
     results: any[];
     pokemon: any[];
+    name: string;
+    weigth: number;
 }
