@@ -1,0 +1,9 @@
+<div class="pagination-container">
+    <ngb-pagination 
+        class="d-flex justify-content-center" 
+        (pageChange)="PageChange($event)" 
+        [collectionSize]="totalPages * 10"
+        [(page)]="page" 
+        [maxSize]="5"
+        aria-label="Default pagination"></ngb-pagination>
+</div>

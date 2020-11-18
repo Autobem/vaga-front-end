@@ -1,0 +1,10 @@
+<div class="col">
+    <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>{{ title }}</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <ng-container *ngFor="let item of options" style="margin: 0.5%;">
+                <button ngbDropdownItem (click)="search(item)">{{ item.title }}</button>
+            </ng-container>
+        </div>
+    </div>
+</div>
