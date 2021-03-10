@@ -1,0 +1,18 @@
+<mat-card class="mat-card">
+      <mat-card-header>
+        <mat-card-title>{{ pokemon.name }}</mat-card-title>
+        <mat-card-subtitle>Nº {{ pokemon.id }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{ pokemonImg }}" alt="Pokemon">
+      <mat-card-content>
+            <mat-chip-list class="pokeInfo">
+                  <mat-chip selected>First type: {{ pokemonFirstType }}</mat-chip>
+                  <mat-chip selected>Second type: {{ pokemonSecondType }}</mat-chip>
+                  <mat-chip selected>Abilities: {{ pokemonFirstAbility }} | {{ pokemonSecondAbility }}</mat-chip>
+                  <mat-chip selected>Height: {{ pokemon.height }}</mat-chip>
+                  <mat-chip selected>Weight: {{ pokemon.weight }}</mat-chip>
+            </mat-chip-list>
+      </mat-card-content>
+      <button type="button" class="btn btn-dark" (click)="home()">Back</button>
+</mat-card>
+
