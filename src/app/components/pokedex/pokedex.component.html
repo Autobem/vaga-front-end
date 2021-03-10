@@ -1,0 +1,118 @@
+
+<div class="options">
+      <p>Select one option below to filter by type:</p>
+      <div class="form-check form-check-inline">
+            <input (click)="refresh()" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">None</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('normal')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Normal</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('fighting')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Fighting</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('flying')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Flying</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('poison')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Poison</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('ground')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Ground</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('rock')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Rock</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('bug')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Bug</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('ghost')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Ghost</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('steel')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Steel</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('fire')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Fire</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('grass')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Grass</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('water')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Water</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('electric')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Electric</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('psychic')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Psychic</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('ice')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Ice</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('dragon')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Dragon</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('dark')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Dark</label>
+      </div>
+      <div class="form-check form-check-inline">
+            <input (click)="sortByType('fairy')"  class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Fairy</label>
+      </div>
+</div>
+
+<div class="container">
+      <mat-form-field>
+            <mat-label>Search your Pokemon</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Pikachu" #input>
+      </mat-form-field>
+            
+            <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+            
+                  <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº </th>
+                  <td mat-cell *matCellDef="let row"> {{row.position}} </td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="image">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Pokemon </th>
+                  <td mat-cell *matCellDef="let row">
+                        <img src="{{row.image}}" alt="Pokemon" width="100" height="100">
+                  </td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                  <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                  </ng-container>
+            
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRow(row)"></tr>
+            
+                  <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                  </tr>
+            </table>
+            
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>
+</div>

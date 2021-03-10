@@ -1,0 +1,36 @@
+.mat-card {
+      width: 300px;
+      margin: auto;
+      background-color:#fb2727;
+      border-radius: 15px;
+      display: grid;
+}
+
+.mat-card-header  {
+      text-align: -webkit-center;
+      background-color: white;
+      padding-top: 10px;
+      border-radius: 10px;
+      display: inline-block;
+}
+
+.mat-card-title {
+      font-size: 35px;
+      margin-bottom: 10px;
+}
+
+mat-card-title {
+      text-transform: uppercase;
+      color: #242424;
+}
+
+.mat-card-subtitle {
+      color: #242424;
+      font-size: 25px;
+}
+
+mat-chip {
+      font-size: 15px;
+      background-color: #f34747;
+      text-transform: capitalize;
+}
