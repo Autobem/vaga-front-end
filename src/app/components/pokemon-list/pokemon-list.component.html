@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="title"><h1>Pokedex Pokemon</h1></div>
+    <div class="row header">
+        <img class="busca" src="../../../assets/images/lupa2.jpg" alt="Busca">
+        <mat-form-field class="search col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" floatLabel="always">
+            <mat-label>Digite nome ou numero da Pokedex</mat-label>
+            <input style="text-transform:lowercase" matInput [formControl]="search" (keydown.enter)="onSearchPokemon()" placeholder="Exemplo: Bulbasaur ou 1">
+        </mat-form-field>
+    </div>
+
+    <div class="row justify-content-center" *ngIf="isLoading">
+        <div class="col-4">
+            <span>Carregando... Por favor Espere!!</span>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+    </div>
+
+    <div *ngIf="!isSearching" class="row pokemon__list" (scroll)="onScroll($event)">
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2" *ngFor="let pokemon of pokemons" (click)="onDetail(pokemon)">
+            <div class="card {{'bg-color-'+ getPrincipalType(pokemon.types) + '-light'}}">
+                <div class="card__info">
+                    <h2 class="color-white">{{pokemon.name}}</h2>
+                    <div class="card__img">
+                        <img [src]="pokemon.sprites?.front_default" [alt]="pokemon.name">
+                    </div>
+                    <span class="color-white {{'bg-color-' + getPrincipalType(pokemon.types)}}" *ngFor="let type of pokemon.types">{{type.type.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="isSearching" class="pokemon__list" (scroll)="onScroll($event)">
+        <div (click)="onDetail(searchPokemon)" class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card {{'bg-color-'+getPrincipalType(searchPokemon.types) +'-light'}}">
+                <div class="card__info">
+                    <h2 class="color-white">{{searchPokemon.name}}</h2>
+                    <span class="color-white {{'bg-color-'+getPrincipalType(searchPokemon.types)}}" *ngFor="let type of searchPokemon.types">{{type.type.name}}</span>                    
+                </div>
+                <div class="card__img">
+                    <img [src]="searchPokemon.sprites?.front_default" [alt]="searchPokemon.name">
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+</div>

@@ -1,0 +1,71 @@
+<div class="sheet__img">
+    <img [src]="pokemon.sprites?.front_default" [alt]="pokemon.name">
+    
+</div>
+
+<mat-tab-group class="sheet">
+    <mat-tab label="Informações">
+        <div class="sheet__tab">
+            <div class="sheet__item">
+                <div class="color-black sheet__item_label">Altura: </div>
+                <div class="color-black sheet__item_label">Peso: </div>
+                <div class="color-black sheet__item_label">Habilidades: </div>
+            </div>
+            <div class="sheet__item">
+                <div class="modalInfo">{{pokemon.height}}</div>
+                <div class="modalInfo">{{pokemon.weight}}</div>
+                <div class="modalInfo">{{getAbilities()}}</div>
+            </div>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Status Base">
+        <div class="sheet__tab">
+            <div class="sheet__item w-100">
+                <div class="sheet__progress w-100">
+                    <div class="w-20 sheet__item_label">HP:</div>
+                    <div class="w-50">
+                        <app-progress-bar [value]="pokemon.stats[0].base_stat"></app-progress-bar>
+                    </div>
+                </div>
+
+                <div class="sheet__progress w-100">
+                    <div class="w-20 color-balck sheet__item_label">Attack: </div>
+                    <div class="w-50">
+                        <app-progress-bar [value]="pokemon.stats[1].base_stat"></app-progress-bar>
+                    </div>
+                </div>
+
+                <div class="sheet__progress w-100">
+                    <div class="w-20 color-balck sheet__item_label">Defense:</div>
+                    <div class="w-50">
+                        <app-progress-bar [value]="pokemon.stats[2].base_stat"></app-progress-bar>
+                    </div>
+                </div>
+
+                <div class="sheet__progress w-100">
+                    <div class="w-20 color-balck sheet__item_label">Sp. Attack:</div>
+                    <div class="w-50">
+                        <app-progress-bar [value]="pokemon.stats[3].base_stat"></app-progress-bar>
+                    </div>
+                </div>
+
+                <div class="sheet__progress w-100">
+                    <div class="w-20 color-balck sheet__item_label">Sp. Defense:</div>
+                    <div class="w-50">
+                        <app-progress-bar [value]="pokemon.stats[4].base_stat"></app-progress-bar>
+                    </div>
+                </div>
+
+                <div class="sheet__progress w-100">
+                    <div class="w-20 color-balck sheet__item_label">Speed:</div>
+                    <div class="w-50">
+                        <app-progress-bar [value]="pokemon.stats[5].base_stat"></app-progress-bar>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </mat-tab>
+
+</mat-tab-group>
