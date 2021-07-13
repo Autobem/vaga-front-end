@@ -25,7 +25,7 @@ Mas nossa busca não seria muito útil só com nome e foto de cada Pokémon. Ent
 Consegue sim! Só precisa saber (ou aprender agora) um pouco sobre as seguintes tecnologias:
 - HTML
 - CSS
-- Angular 5 ou Vue.js
+- Angular 8+
 - Git
 - Consumo de APIs Rest
 
