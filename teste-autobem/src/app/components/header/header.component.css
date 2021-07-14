@@ -1,0 +1,31 @@
+@font-face{
+    font-family: poke-font;
+    src: url(/../../../assets/fonts/Pokemon\ Solid.ttf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* h1{
+    font-family: 'Press Start 2P', cursive;
+    color:rgb(230, 230, 230);
+} */
+
+
+.navbar{
+    background-color: rgb(238,21,21);
+    color: rgb(230, 230, 230);
+    padding: 4px 4px 0px 4px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+    height: 50px;
+    width: 100vw;
+}
+
+h1{
+    font-family: poke-font;
+    color: white;
+}

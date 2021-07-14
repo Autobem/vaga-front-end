@@ -1,0 +1,20 @@
+.pagination{
+    margin: 10px;
+    justify-content: center;
+}
+
+.card:hover{
+    cursor: pointer;
+    border: solid rgba(34, 34, 36, 0.2);
+    transition: ease-in-out 0.2s;
+}
+
+.id{
+    color: rgb(34,34,36);
+    font-weight: bold;
+}
+
+.card-title{
+    color: rgb(34,34,36);
+    font-weight: bold;
+}

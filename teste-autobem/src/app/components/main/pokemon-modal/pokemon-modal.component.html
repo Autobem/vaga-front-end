@@ -1,0 +1,50 @@
+  <div class="modal-content" *ngIf="modal.isOpen">
+  <div *ngFor="let p of modal.pokemon">
+    
+    <div class="modal-header" >
+      <p class="p-id" > 
+        #{{ p.id }}</p>      
+      <h3 class="modal-title mx-auto pl-5">
+        {{ p.name | uppercase }} </h3>
+        <button type="button" class="close pull-left" aria-label="Close" (click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="md-n5">
+          <img 
+          class="d-block mx-auto mt-n3" style="width: 40%;"
+          src={{p.details.sprites.front_default}}>
+        </div>
+
+      <div class="info text-center">
+        <div class="m-1">
+          
+        </div>
+        <div class="row justify-content-md-center m-1">
+            <p class="type-style">Type:&nbsp; </p>
+          <div  *ngFor="let type of p.details.types" 
+          class="type d-inline-block" 
+          [ngClass]="type.type.name">
+              {{ type.type.name | titlecase }}&nbsp;
+          </div>        
+      </div>
+      
+        <div class="row justify-content-md-center m-1">
+            <p class="type-style">Skills:&nbsp; </p>
+          <div  *ngFor="let skill of p.details.abilities" 
+          class="skill d-inline-block">
+              {{ skill.ability.name | titlecase }}&nbsp;
+          </div> 
+        </div>
+        <div class="row justify-content-md-center m-1">
+          <p class="type-style">{{ p.description }}  </p>
+      </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  
+    
+
