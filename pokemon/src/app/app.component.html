@@ -1,0 +1,73 @@
+<div class="container">
+  <form [formGroup]="pokemonForm">
+    <div class="input-group mt-2">
+      <input type="text" class="form-control" id="name" formControlName="name" placeholder="Pesquisar">
+      <div class="input-group-append" id="button-addon4">
+        <button class="btn btn-outline-primary" type="button" (click)="pesquisar()">Pesquisar</button>
+      </div>
+    </div>
+  </form>
+
+  <table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th scope="col" sortable="name"></th>
+      </tr>
+    </thead>
+    <tbody class="border rounded">
+      <tr *ngFor="let pokemon of pokemons | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
+        (click)="open(content , pokemon.id)">
+        <td style="width: 20px">
+          <img [src]="pokemon.sprite" alt="VTNC" class="border rounded" style="background-color: white;">
+        </td>
+        <td>
+          <strong>
+            {{ pokemon.name | uppercase }}
+          </strong>
+          <br>
+          <strong>
+            #{{ pokemon.id }}
+          </strong>
+          <br>
+          <h5>
+            <span *ngFor="let type of pokemon.types" class="badge badge-secondary mr-1">
+              {{ type.type.name | uppercase }}
+            </span>
+          </h5>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="4">
+  </ngb-pagination>
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header" style="background-color: rgb(220, 220, 220);">
+      <h4 class="modal-title" id="modal-basic-title">#{{pokemon.id}} {{ pokemon.name | uppercase }}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" style="background-color: rgb(249, 249, 249);">
+      <div class="col-md-12 ">
+        <img [src]="pokemon.sprite" alt="VTNC" class="border rounded-circle d-block ml-auto mr-auto" style="background-color:white; width: 200px;">
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-2">
+          <h5><span *ngFor="let type of pokemon.types" class="badge badge-secondary mr-2">
+              {{ type.type.name | uppercase }}
+            </span></h5>
+        </div>
+      </div>
+      <div *ngFor="let stats of pokemon.stats" class="ml-1" style="background-color: rgb(249, 249, 249);">
+        <strong>{{ stats.stat.name | uppercase }}:</strong> {{ stats.base_stat }}
+      </div>
+    </div>
+
+    <div class="modal-footer" style="background-color: rgb(220, 220, 220);">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+    </div>
+</ng-template>
