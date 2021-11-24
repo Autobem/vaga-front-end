@@ -1,0 +1,33 @@
+@import "../../../config-scss/rem-calc.scss";
+
+.quadrado-list {
+  width: 290px;
+  height: 157px;
+  border-radius: 8px;
+  background-color: #FFF;
+  box-shadow: 4px 4px #88888846;
+  cursor: pointer;
+  margin: 10px;
+}
+
+ul li {
+  background-color: #EFEFEF;
+  border-radius: 32px;
+  text-align: center;
+  margin: 5px;
+}
+
+.bolas {
+  height: rem-calc(90);
+  width: rem-calc(110);
+
+  background: url(../../../assets/bolinhas.svg)no-repeat;
+}
+
+.title {
+  color:#1d2c5e;
+}
+
+img {
+  width: rem-calc(60);
+}
