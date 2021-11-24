@@ -1,49 +1,35 @@
-# Teste de Frontend
+# Front-end Pokemons :anger:
 
-Olá Dev!  Tudo bem?
+### Descrição do projeto :seedling:
 
-Nós estamos procurando profissionais organizados, que não saibam de tudo, porém que saibam pesquisar e aprender.
+Webpage que consome a API do pokeapi para listagem dos pokemons.
 
-Este teste tem como objetivo avaliar e desafiar você. Não é obrigatório realizá-lo completamente, queremos apenas reconhecer seu esforço e potencial para aprender, se adaptar e tomar decisões.
+### STATUS :technologist:
+- Consumir API pokeapi.co (Finalizado)
+- Pesquisa por nome (Finalizado)
+- Ordenação de lista por nome (Finalizado)
 
-Vamos ao teste!
+### Pré-requisitos :thumbsup:
 
-## Desafio Pokémon
+- node
+- Angular
 
-Sua missão é criar uma landing page para buscar, listar e detalhar pokémons, usando a API Pokeapi.co.
+### Foi utilizado :point_down:
 
-O layout inteiro é livre, mas a lista deverá conter no mínimo o nome do pokémon e a sua respectiva imagem.
+- Visual Studio Code
+- Bootstrap 
+- NG-Bootstrap
+- Pokeapi.co
+- Google Chrome
 
-Sobre a busca, ela poderá ser feita de 3 formas: digitando o nome do pokémon, selecionando um ou mais tipos específicos ou listando todos de uma vez (paginação é sempre bem-vinda!).
+### Instalação da aplicação :point_down:
 
-Seria interessante ordenar nossa lista também e pensamos em pelo menos dois tipos: por número do Pokémon (padrão) ou por nome (ordem alfabética). Fique à vontade para fazer mais alguma.
+- npm install
+### Iniciar aplicação :point_down:
 
-Mas nossa busca não seria muito útil só com nome e foto de cada Pokémon. Então sugerimos que, ao clicar em um item, abra um modal, com mais detalhes e características dele. Inclusive você pode decidir quais informações seriam mais úteis para nós.
+- ng serve
+## End-points consumidos da API: :anger:
 
-## Consigo fazer?
+`GET https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100`
 
-Consegue sim! Só precisa saber (ou aprender agora) um pouco sobre as seguintes tecnologias:
-- HTML
-- CSS
-- Angular 8+
-- Git
-- Consumo de APIs Rest
-
-
-## Regras
-
-Para o desafio ficar mais interessante, decidimos criar umas regras básicas:
-- No layout, você utilizar bootstrap é essencial.
-- Na parte de JS, deve utilizar algum framework (ex: VueJS ou Angular...tente não usar jQuery), lembrando que Angular é preferêncial, pois utilizamos aqui na Autobem.
-
-## Por onde começo?
-
-Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.
-
-Após terminar o desafio, você pode solicitar um pull request para a branch master do nosso repositório. Vamos receber e fazer a avaliação de todos.
-
-## Só isso?
-
-Só! Mas se estiver motivado, tente preparar o projeto para ser executado e testado de maneira prática, usando alguma ferramenta que facilite isso (ex: npm, yarn, docker, etc...). 
-
-Se preferir, pode publicá-lo em algum servidor de sites estáticos (ex: Firebase, Netlify...), esses exemplos são gratuitos, mas você pode usar um Cloud próprio também (ex: AWS, Digital Ocean, Linode...).
+`GET https://pokeapi.co/api/v2/pokemon/{id-pokemon}/`
