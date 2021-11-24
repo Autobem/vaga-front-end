@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +14,7 @@ import { BuscaComponent } from './busca/busca.component';
     ListaComponent,
     BuscaComponent
   ],
-  exports: [HeaderComponent, BuscaComponent, ListaComponent],
+  exports: [HeaderComponent, BuscaComponent, ListaComponent,NgbModule],
   imports: [CommonModule, RouterModule]
 })
 export class SharedModule { }
