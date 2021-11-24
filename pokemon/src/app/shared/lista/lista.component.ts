@@ -1,3 +1,4 @@
+import { DetalhesComponent } from './../../paginas/detalhes/detalhes.component';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PokemonApiService } from './../../service/pokemon-api.service';
@@ -59,10 +60,19 @@ export class ListaComponent implements OnInit {
   }
 
   public pesquisar(value: string) {
+    const filter = this.pokemonsFiltro.filter((resultado: any) => {
+      return !resultado.name.indexOf(value.toLocaleLowerCase());
+    });
 
+    this.pokemons = filter;
   }
 
   abrirModal(pokemon: any): void {
-
+    const modal = this.modalService.open(DetalhesComponent, {
+      size: 'sm',
+      windowClass: 'modal-rounded',
+    });
+    //MANDANDO POKEMON CLICADO PARA DENTRO DA MODAL.
+    modal.componentInstance.pokemon = pokemon;
   }
 }
