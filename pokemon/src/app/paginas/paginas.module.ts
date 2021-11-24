@@ -3,6 +3,7 @@ import { DetalhesComponent } from './detalhes/detalhes.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -14,6 +15,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     RoutingModule,
+    SharedModule
   ]
 })
 export class PaginasModule { }
