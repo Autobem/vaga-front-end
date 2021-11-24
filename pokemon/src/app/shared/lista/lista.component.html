@@ -1,26 +1,28 @@
 <app-busca></app-busca>
+
 <div class="row col-md-12 p-0 m-0">
-  <div class="col-md-5 ml-auto mr-auto quadrado-list">
+  <div
+    *ngFor="let pokemon of pokemons"
+    class="col-md-5 ml-auto mr-auto quadrado-list"
+    (click)="abrirModal(pokemon)"
+  >
     <div class="row">
       <div class="container"></div>
-      <h2 class="col-md-12 col-sm-8">
-        <strong class="title font-italic">XXXXX</strong>
-      </h2>
+      <h2 class="col-md-12 col-sm-8"><strong class="title font-italic">{{ pokemon.name }}</strong></h2>
       <div class="col-6">
         <section>
           <ul>
-            <li>XXXXX</li>
+            <li *ngFor="let type of pokemon.types">
+              {{ type.type.name }}
+            </li>
           </ul>
         </section>
       </div>
 
       <div class="col-6 bolas">
-        <img
-          class="img-auto img"
-          src=""
-          alt=""
-        />
+        <img class="img-auto img" [src]="pokemon.sprites.other.dream_world.front_default" [alt]="pokemon.name" />
       </div>
+
     </div>
   </div>
 </div>
