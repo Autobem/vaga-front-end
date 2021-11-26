@@ -1,4 +1,9 @@
 # Pokedex
-Pokedex desenvolvido com HTML, CSS e JAVACRIPT
+Nesse projeto foi utliziado:
+. HTML
+. CSS
+. JAVASCRIPT
+. GIT
+. Consumo de APIs Rest
 
 *lINK PARA ACESSO  A PÁGINA: https://p-pokedex.netlify.app/
