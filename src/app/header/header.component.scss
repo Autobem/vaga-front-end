@@ -1,0 +1,16 @@
+@mixin for-phone-only {
+  @media (max-width: 575px) {
+    @content;
+  }
+}
+
+.logo-pokemon {
+  padding: 2rem 0;
+  & img {
+    max-width: 100%;
+    height: 200px;
+    @include for-phone-only {
+      height: 100px;
+    }
+  }
+}
