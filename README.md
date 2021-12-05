@@ -1,49 +1,27 @@
-# Teste de Frontend
+# Pokedex
 
-Olá Dev!  Tudo bem?
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
 
-Nós estamos procurando profissionais organizados, que não saibam de tudo, porém que saibam pesquisar e aprender.
+## Development server
 
-Este teste tem como objetivo avaliar e desafiar você. Não é obrigatório realizá-lo completamente, queremos apenas reconhecer seu esforço e potencial para aprender, se adaptar e tomar decisões.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Vamos ao teste!
+## Code scaffolding
 
-## Desafio Pokémon
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-Sua missão é criar uma landing page para buscar, listar e detalhar pokémons, usando a API Pokeapi.co.
+## Build
 
-O layout inteiro é livre, mas a lista deverá conter no mínimo o nome do pokémon e a sua respectiva imagem.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-Sobre a busca, ela poderá ser feita de 3 formas: digitando o nome do pokémon, selecionando um ou mais tipos específicos ou listando todos de uma vez (paginação é sempre bem-vinda!).
+## Running unit tests
 
-Seria interessante ordenar nossa lista também e pensamos em pelo menos dois tipos: por número do Pokémon (padrão) ou por nome (ordem alfabética). Fique à vontade para fazer mais alguma.
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Mas nossa busca não seria muito útil só com nome e foto de cada Pokémon. Então sugerimos que, ao clicar em um item, abra um modal, com mais detalhes e características dele. Inclusive você pode decidir quais informações seriam mais úteis para nós.
+## Running end-to-end tests
 
-## Consigo fazer?
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-Consegue sim! Só precisa saber (ou aprender agora) um pouco sobre as seguintes tecnologias:
-- HTML
-- CSS
-- Angular 8+
-- Git
-- Consumo de APIs Rest
+## Further help
 
-
-## Regras
-
-Para o desafio ficar mais interessante, decidimos criar umas regras básicas:
-- No layout, você utilizar bootstrap é essencial.
-- Na parte de JS, deve utilizar algum framework (ex: VueJS ou Angular...tente não usar jQuery), lembrando que Angular é preferêncial, pois utilizamos aqui na Autobem.
-
-## Por onde começo?
-
-Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.
-
-Após terminar o desafio, você pode solicitar um pull request para a branch master do nosso repositório. Vamos receber e fazer a avaliação de todos.
-
-## Só isso?
-
-Só! Mas se estiver motivado, tente preparar o projeto para ser executado e testado de maneira prática, usando alguma ferramenta que facilite isso (ex: npm, yarn, docker, etc...). 
-
-Se preferir, pode publicá-lo em algum servidor de sites estáticos (ex: Firebase, Netlify...), esses exemplos são gratuitos, mas você pode usar um Cloud próprio também (ex: AWS, Digital Ocean, Linode...).
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

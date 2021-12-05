@@ -1,0 +1,20 @@
+<main class="container">
+  <article class="row py-3 pokemon-content">
+    <div
+      class="col-3 p-3 pokemon-card"
+      *ngFor="
+        let pokemon of pokemons
+          | paginate
+            : { itemsPerPage: 9, currentPage: page, totalItems: totalPokemons }
+      "
+    >
+      <img [src]="pokemon.sprites.front_default" alt="Pokémon" />
+      <h4>{{ pokemon.name }}</h4>
+      <span><strong>Type: </strong>{{ pokemon.types[0].type.name }}</span>
+    </div>
+  </article>
+</main>
+
+<pagination-controls
+  (pageChange)="page = $event; pokemons = []; getPokemons()"
+></pagination-controls>
