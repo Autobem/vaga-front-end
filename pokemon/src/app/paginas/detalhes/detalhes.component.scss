@@ -1,5 +1,6 @@
 .body {
-  background-color: #e6ecf0;
+  background-color: #343a40;
+  color: #e6ecf0;
 }
 
 .header {
@@ -8,18 +9,18 @@
 }
 
 .estatistica {
-  color: #ff5473;
   font-weight: 900;
   font-size: 32px;
   text-decoration: underline;
   font-style: italic;
+  color: #e6ecf0;
 }
 .name {
   font-style: italic;
+  color: #e6ecf0;
 }
 .botao {
-  background-color: #ff5473;
-  color: #e6ecf0;
+  color: #343a40;
 }
 
 btn:focus {

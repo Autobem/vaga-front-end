@@ -10,8 +10,8 @@
 <div class="modal-body body">
     <article class="pokemon__status__statistics">
       <section>
-        <h2 class="estatistica ">Estatísticas</h2>
-        <ol>
+        <h2 class="text-warning estatistica">Estatísticas</h2>
+        <ol style="padding: 0;">
           <li *ngFor="let estatistica of pokemon.stats" class="stats">
             <span>
               {{ estatistica.stat.name }}
@@ -24,6 +24,6 @@
           </li>
         </ol>
       </section>
-      <button (click)="voltar()" class="btn col-12 botao">Voltar</button>
+      <button (click)="voltar()" class="btn btn-warning col-12 botao">Voltar</button>
     </article>
 </div>

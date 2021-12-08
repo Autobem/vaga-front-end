@@ -9,6 +9,12 @@ import { PokemonApiService } from './../../service/pokemon-api.service';
   styleUrls: ['./lista.component.scss'],
 })
 export class ListaComponent implements OnInit {
+
+  collectionSize: any;
+  pageSize = 10;
+  page = 1;
+
+
   private pokemonsFiltro: any[] = [];
   public pokemons: any[] = [];
 
@@ -35,6 +41,7 @@ export class ListaComponent implements OnInit {
         //adiciona na lista
         (resposta) => {
           this.pokemons.push(resposta);
+          this.collectionSize = this.pokemons.length;
         },
 
         //em caso de erro
@@ -65,6 +72,7 @@ export class ListaComponent implements OnInit {
     });
 
     this.pokemons = filter;
+    this.collectionSize = this.pokemons.length;
   }
 
   abrirModal(pokemon: any): void {

@@ -17,17 +17,28 @@ ul li {
   margin: 5px;
 }
 
-.bolas {
-  height: rem-calc(90);
-  width: rem-calc(110);
-
-  background: url(../../../assets/bolinhas.svg)no-repeat;
-}
-
 .title {
   color:#1d2c5e;
 }
 
 img {
   width: rem-calc(60);
+}
+
+td,tr {
+  cursor: pointer;
+}
+
+.w-20 {
+  width: 20px;
+}
+
+.justify-content-center {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+ngb-pagination .page-item.active .page-link {
+  background-color: #7460ee;
+  border-color: #7460ee;
 }
