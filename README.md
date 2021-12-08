@@ -8,6 +8,7 @@ Webpage que consome a API do pokeapi para listagem dos pokemons.
 - Consumir API pokeapi.co (Finalizado)
 - Pesquisa por nome (Finalizado)
 - Ordenação de lista por nome (Finalizado)
+- Paginação (Finalizado)
 
 ### Pré-requisitos :thumbsup:
 
