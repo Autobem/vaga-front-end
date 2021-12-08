@@ -1,0 +1,22 @@
+@import './config-scss/variables.scss';
+@import './config-scss/reset.scss';
+@import './config-scss/rem-calc.scss';
+
+html{
+    font-family: 'Roboto', sans-serif;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url('./assets/background/bgPokbola.svg');
+    background-attachment: fixed;
+    background-size: 100%;
+    background-repeat: no-repeat; 
+    
+}
+
+main{
+  width: rem-calc(700);  
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
