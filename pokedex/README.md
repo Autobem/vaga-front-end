@@ -16,4 +16,4 @@ Landing page para exibir os pokémons, usando a API Pokeapi.co.
 
 ### Deploy
 
-- Netlify: 
+- Netlify: https://app-pode-dex.netlify.app/
