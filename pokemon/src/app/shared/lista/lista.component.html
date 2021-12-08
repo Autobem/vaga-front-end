@@ -1,0 +1,40 @@
+<body>
+  <main class="container">
+    <div class="input-group mt-2">
+      <app-busca style="width: 100%;" (emmitSearch)="pesquisar($event)"></app-busca>
+    </div>
+
+    <table class="table table-sm table-dark">
+      <thead>
+        <tr>
+          <th></th>
+          <th scope="col" sortable="name"></th>
+        </tr>
+      </thead>
+      <tbody class="rounded">
+        <tr class="cursor" (click)="abrirModal(pokemon)"
+          *ngFor="let pokemon of pokemons | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+          <td class="w-20">
+            <img [src]="pokemon.sprites.other.dream_world.front_default" [alt]="pokemon.name" class="">
+          </td>
+          <td>
+            <strong class="font-italic">{{ pokemon.name | uppercase }}</strong>
+            <br>
+            <h5>
+              <span style="text-align: end;" class="badge badge-warning mr-1" *ngFor="let type of pokemon.types">
+                {{ type.type.name }}
+              </span>
+            </h5>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+
+    <div class="col-12 justify-content-center">
+      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="4">
+      </ngb-pagination>
+    </div>
+
+  </main>
+</body>

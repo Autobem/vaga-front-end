@@ -1,0 +1,29 @@
+<div class="modal-header body header">
+  <div class="mr-auto image">
+    <img width="70"
+    [src]="pokemon.sprites.other.dream_world.front_default"
+    [alt]="pokemon.name"/>
+  </div>
+  <h2 class="name">{{ pokemon?.name }}</h2>
+</div>
+
+<div class="modal-body body">
+    <article class="pokemon__status__statistics">
+      <section>
+        <h2 class="text-warning estatistica">Estatísticas</h2>
+        <ol style="padding: 0;">
+          <li *ngFor="let estatistica of pokemon.stats" class="stats">
+            <span>
+              {{ estatistica.stat.name }}
+            </span>
+            <span>
+              <strong>
+                {{ estatistica.base_stat }}
+              </strong>
+            </span>
+          </li>
+        </ol>
+      </section>
+      <button (click)="voltar()" class="btn btn-warning col-12 botao">Voltar</button>
+    </article>
+</div>

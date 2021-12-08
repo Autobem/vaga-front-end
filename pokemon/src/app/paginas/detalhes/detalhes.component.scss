@@ -1,0 +1,38 @@
+.body {
+  background-color: #343a40;
+  color: #e6ecf0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.estatistica {
+  font-weight: 900;
+  font-size: 32px;
+  text-decoration: underline;
+  font-style: italic;
+  color: #e6ecf0;
+}
+.name {
+  font-style: italic;
+  color: #e6ecf0;
+}
+.botao {
+  color: #343a40;
+}
+
+btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image {
+  width: 30px;
+}
